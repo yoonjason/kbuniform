@@ -13,7 +13,6 @@ import FirebaseCore
 import FirebaseMessaging
 import FirebaseInstanceID
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -26,23 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
-        let authOptions : UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in})
-        application.registerForRemoteNotifications()
-        
-        return true
-    }
-    
-    
-    
-    
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        //토큰 갱신을 모니터링한다. 갱신이 될 때 탄다.
-        
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        print("[Log] deviceToken :", deviceTokenString)
-        
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
@@ -59,13 +41,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
-        Messaging.messaging().apnsToken = deviceToken
-        print(#function, deviceToken)
-        print(Messaging.messaging().apnsToken)
-        
+        return true
     }
     
     
+    
+    
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print("[Log] deviceToken :", deviceTokenString)
+        
+       
+        Messaging.messaging().apnsToken = deviceToken
+        print(deviceToken)
+    }
     
     
     
@@ -119,7 +109,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
-
 extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //앱이 포그라운드에 있을 때 호출되는 메서드
@@ -135,8 +124,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     }
 }
 
-extension AppDelegate : MessagingDelegate {
-    
+extension AppDelegate :  MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         //생성이 되고나면, 바뀌지 않으면 여기를 타는 듯 하다.
         //최초 설치 이후, 앱을 재설치 하더라도, 이 부분을 타고, 이 전의 token값을 바꿔준다.
@@ -180,25 +168,25 @@ extension AppDelegate : MessagingDelegate {
  13.0이상으로 올렸을 경우 다시 재 사용한다.
  
  - Appdelegate의 var window:UIWindow? 도 제거
- 
- <key>UIApplicationSceneManifest</key>
- <dict>
- <key>UIApplicationSupportsMultipleScenes</key>
- <false/>
- <key>UISceneConfigurations</key>
- <dict>
- <key>UIWindowSceneSessionRoleApplication</key>
- <array>
- <dict>
- <key>UISceneConfigurationName</key>
- <string>Default Configuration</string>
- <key>UISceneDelegateClassName</key>
- <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
- <key>UISceneStoryboardFile</key>
- <string>Main</string>
- </dict>
- </array>
- </dict>
- </dict>
+
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+        <key>UISceneConfigurations</key>
+        <dict>
+            <key>UIWindowSceneSessionRoleApplication</key>
+            <array>
+                <dict>
+                    <key>UISceneConfigurationName</key>
+                    <string>Default Configuration</string>
+                    <key>UISceneDelegateClassName</key>
+                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+                    <key>UISceneStoryboardFile</key>
+                    <string>Main</string>
+                </dict>
+            </array>
+        </dict>
+    </dict>
  
  */

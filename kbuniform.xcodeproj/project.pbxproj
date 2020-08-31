@@ -30,6 +30,7 @@
 		1B79385D24FC823A00147AC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B79385F24FC823A00147AC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B79386524FC84DD00147AC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1B79386724FC9B2900147AC3 /* kbuniform.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = kbuniform.entitlements; sourceTree = "<group>"; };
 		83F461015BEB4A393A105FA0 /* Pods_kbuniform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kbuniform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23553B7E6A530563CCD18EC /* Pods-kbuniform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kbuniform.debug.xcconfig"; path = "Target Support Files/Pods-kbuniform/Pods-kbuniform.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +68,7 @@
 		1B79384D24FC823900147AC3 /* kbuniform */ = {
 			isa = PBXGroup;
 			children = (
+				1B79386724FC9B2900147AC3 /* kbuniform.entitlements */,
 				1B79384E24FC823900147AC3 /* AppDelegate.swift */,
 				1B79385024FC823900147AC3 /* SceneDelegate.swift */,
 				1B79385224FC823900147AC3 /* ViewController.swift */,
@@ -361,6 +363,7 @@
 			baseConfigurationReference = F23553B7E6A530563CCD18EC /* Pods-kbuniform.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = kbuniform/kbuniform.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = kbuniform/Info.plist;
@@ -381,6 +384,7 @@
 			baseConfigurationReference = 0CE18FDE6D763890EB86C11D /* Pods-kbuniform.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = kbuniform/kbuniform.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = kbuniform/Info.plist;
