@@ -11,10 +11,11 @@ import CoreData
 import Firebase
 import FirebaseCore
 import FirebaseMessaging
+import FirebaseInstanceID
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
@@ -26,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         let authOptions : UNAuthorizationOptions = [.alert, .badge, .sound]
-        
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in})
+        application.registerForRemoteNotifications()
         
         return true
     }
@@ -36,6 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        //토큰 갱신을 모니터링한다. 갱신이 될 때 탄다.
+        
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        print("[Log] deviceToken :", deviceTokenString)
+        
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
@@ -54,11 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         Messaging.messaging().apnsToken = deviceToken
         print(#function, deviceToken)
+        print(Messaging.messaging().apnsToken)
+        
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print(#function, fcmToken)
-    }
+    
+    
+    
     
     /*
      CoreData Stack
@@ -111,6 +120,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
 }
 
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //앱이 포그라운드에 있을 때 호출되는 메서드
+        completionHandler([.alert, .badge, .sound])
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        /*
+         Notification의 응답에 대한 처리를 해줄 수 있는 메서드
+         1. 유저가 Notificaton을 종료 했을 때,
+         2. 유저가 Notificaton을 열었을 때
+         */
+        completionHandler()
+    }
+}
+
+extension AppDelegate : MessagingDelegate {
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        //생성이 되고나면, 바뀌지 않으면 여기를 타는 듯 하다.
+        //최초 설치 이후, 앱을 재설치 하더라도, 이 부분을 타고, 이 전의 token값을 바꿔준다.
+        //새로 받은 토큰 값을 apnstoken과 같이 바꾸는 지는 확인해볼 필요가 있음.
+        /*
+         1. 새 기기에서 앱 복원
+         2. 유저가 앱 삭제 / 재설치
+         3. 유저가 앱 데이터 소거
+         */
+        
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error)")
+            } else if let result = result {
+                print("Remote instance ID token: \(result.token)")
+                //            self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
+            }
+        }
+        print(#function, fcmToken)
+    }
+}
 /*
  최소 버전을 ios 13.0이상으로 올렸을 경우 주석을 풀어야한다.
  
@@ -133,25 +180,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
  13.0이상으로 올렸을 경우 다시 재 사용한다.
  
  - Appdelegate의 var window:UIWindow? 도 제거
-
-    <key>UIApplicationSceneManifest</key>
-    <dict>
-        <key>UIApplicationSupportsMultipleScenes</key>
-        <false/>
-        <key>UISceneConfigurations</key>
-        <dict>
-            <key>UIWindowSceneSessionRoleApplication</key>
-            <array>
-                <dict>
-                    <key>UISceneConfigurationName</key>
-                    <string>Default Configuration</string>
-                    <key>UISceneDelegateClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-                    <key>UISceneStoryboardFile</key>
-                    <string>Main</string>
-                </dict>
-            </array>
-        </dict>
-    </dict>
+ 
+ <key>UIApplicationSceneManifest</key>
+ <dict>
+ <key>UIApplicationSupportsMultipleScenes</key>
+ <false/>
+ <key>UISceneConfigurations</key>
+ <dict>
+ <key>UIWindowSceneSessionRoleApplication</key>
+ <array>
+ <dict>
+ <key>UISceneConfigurationName</key>
+ <string>Default Configuration</string>
+ <key>UISceneDelegateClassName</key>
+ <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+ <key>UISceneStoryboardFile</key>
+ <string>Main</string>
+ </dict>
+ </array>
+ </dict>
+ </dict>
  
  */
