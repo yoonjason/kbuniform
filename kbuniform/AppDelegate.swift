@@ -17,7 +17,7 @@ import FirebaseInstanceID
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("[Log] deviceToken :", deviceTokenString)
         
-       
+        
         Messaging.messaging().apnsToken = deviceToken
         print(deviceToken)
     }
@@ -108,21 +108,193 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    open class DownloadManager: NSObject {
+
+        open class func image(_ URLString: String) -> String? {
+
+            let componet = URLString.components(separatedBy: "/")
+
+            if let fileName = componet.last {
+
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+
+                if let documentsPath = paths.first {
+
+                    let filePath = documentsPath.appending("/" + fileName)
+
+                    if let imageURL = URL(string: URLString) {
+
+                        do {
+
+                            let data = try NSData(contentsOf: imageURL, options: NSData.ReadingOptions(rawValue: 0))
+
+                            if data.write(toFile: filePath, atomically: true) {
+
+                                return filePath
+
+                            }
+
+                        } catch {
+
+                            print(error)
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            
+
+            return nil
+
+        }
+
+    }
+    
 }
 extension AppDelegate : UNUserNotificationCenterDelegate {
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //앱이 포그라운드에 있을 때 호출되는 메서드
+        print(#function)
+        
+        let userInfo = notification.request.content.userInfo
+        //앱이 떠있을 때, 앱이 포그라운드 있을 때 호출됨.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        let content = UNMutableNotificationContent()
+        if let options = userInfo["fcm_options"] as? NSDictionary {
+            if let imagePath = options["image"] as? String {
+                let imagas = DownloadManager.image(imagePath)
+                let imageURL = URL(fileURLWithPath: imagas!)
+                do {
+                    let attach = try UNNotificationAttachment(identifier: "image-test", url: imageURL, options: nil)
+                    content.attachments = [attach]
+                    
+//                    let attach = try UNNotificationAttachment(identifier: "image-test", url: URL(string: imagePath)!, options: nil)
+//                    content.attachments = [attach]
+//                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
+//                    guard let attachment = UNNotificationAttachment.create(imageFileIdentifier: "img.jpeg", data: imageData!, options: nil) else {return}
+//                    content.attachments = [attachment]
+                }catch {
+                    print(error)
+                }
+            }
+        }
+        content.title = "FFFFFFF"
+        content.body = "육회가 먹고 싶다."
+        center.delegate = self
+//        let request = UNNotificationRequest(identifier: "Image_TEST", content: content, trigger: nil) // Schedule the notification.
+//        center.add(request, withCompletionHandler: { (error) in
+//            print("Error ===== ", error)
+//            return
+//        })
+//
+//        center.add(request){ (error : Error?) in
+//            if let theError = error {
+//                print(theError)
+//            }
+//        }
+
+        
+        // Print full message.
+        print("userNotificationCenter completionHandler UNNotificationPresentationOptions \(userInfo)")
+        
         completionHandler([.alert, .badge, .sound])
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print(#function)
         /*
          Notification의 응답에 대한 처리를 해줄 수 있는 메서드
          1. 유저가 Notificaton을 종료 했을 때,
          2. 유저가 Notificaton을 열었을 때
          */
+        
+        let userInfo = response.notification.request.content.userInfo
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        let content = UNMutableNotificationContent()
+        if let options = userInfo["fcm_options"] as? NSDictionary {
+            if let imagePath = options["image"] as? String {
+                do {
+//                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
+//                    let attach = try UNNotificationAttachment(identifier: "image-test", url: URL(string: imagePath)!, options: nil)
+//                    content.attachments = [attach]
+                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
+                    guard let attachment = UNNotificationAttachment.create(imageFileIdentifier: "img.jpeg", data: imageData!, options: nil) else {return}
+                    content.attachments = [attachment]
+                }catch (let error){
+                    print(error)
+                }
+            }
+        }
+        content.title = "FFFFFFF"
+        content.body = "육회가 먹고 싶다."
+        let request = UNNotificationRequest(identifier: "Image_TEST", content: content, trigger: nil) // Schedule the notification.
+        center.delegate = self
+        center.add(request){ (error : Error?) in
+            if let theError = error {
+                print(theError)
+                return
+            }
+        }
+
         completionHandler()
+    
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        print(#function, userInfo)
+        //           if let data = Mapper<FCMData>().map(JSONObject: userInfo) {
+        //               imagePush(data: data)
+        //           }
+        
+        // Print full message.
+        print(userInfo)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        print(#function, userInfo)
+        
+        //           if let data = Mapper<FCMData>().map(JSONObject: userInfo) {
+        //               imagePush(data: data)
+        //           }
+        // Print full message.
+        print(userInfo)
+        
+        completionHandler(UIBackgroundFetchResult.newData)
     }
 }
+
 
 extension AppDelegate :  MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
@@ -168,25 +340,46 @@ extension AppDelegate :  MessagingDelegate {
  13.0이상으로 올렸을 경우 다시 재 사용한다.
  
  - Appdelegate의 var window:UIWindow? 도 제거
-
-    <key>UIApplicationSceneManifest</key>
-    <dict>
-        <key>UIApplicationSupportsMultipleScenes</key>
-        <false/>
-        <key>UISceneConfigurations</key>
-        <dict>
-            <key>UIWindowSceneSessionRoleApplication</key>
-            <array>
-                <dict>
-                    <key>UISceneConfigurationName</key>
-                    <string>Default Configuration</string>
-                    <key>UISceneDelegateClassName</key>
-                    <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-                    <key>UISceneStoryboardFile</key>
-                    <string>Main</string>
-                </dict>
-            </array>
-        </dict>
-    </dict>
+ 
+ <key>UIApplicationSceneManifest</key>
+ <dict>
+ <key>UIApplicationSupportsMultipleScenes</key>
+ <false/>
+ <key>UISceneConfigurations</key>
+ <dict>
+ <key>UIWindowSceneSessionRoleApplication</key>
+ <array>
+ <dict>
+ <key>UISceneConfigurationName</key>
+ <string>Default Configuration</string>
+ <key>UISceneDelegateClassName</key>
+ <string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+ <key>UISceneStoryboardFile</key>
+ <string>Main</string>
+ </dict>
+ </array>
+ </dict>
+ </dict>
  
  */
+extension UNNotificationAttachment {
+    
+    /// Save the image to disk
+    static func create(imageFileIdentifier: String, data: NSData, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
+        let fileManager = FileManager.default
+        let tmpSubFolderName = ProcessInfo.processInfo.globallyUniqueString
+        let tmpSubFolderURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tmpSubFolderName, isDirectory: true)
+        
+        do {
+            try fileManager.createDirectory(at: tmpSubFolderURL!, withIntermediateDirectories: true, attributes: nil)
+            let fileURL = tmpSubFolderURL?.appendingPathComponent(imageFileIdentifier)
+            try data.write(to: fileURL!, options: [])
+            let imageAttachment = try UNNotificationAttachment.init(identifier: imageFileIdentifier, url: fileURL!, options: options)
+            return imageAttachment
+        } catch let error {
+            print("error \(error)")
+        }
+        return nil
+    }
+    
+}
