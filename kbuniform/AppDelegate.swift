@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("[Log] deviceToken :", deviceTokenString)
-        
+        print(deviceToken)
         
         Messaging.messaging().apnsToken = deviceToken
         print(deviceToken)
@@ -204,7 +204,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         // Print full message.
 //        print("userNotificationCenter completionHandler UNNotificationPresentationOptions \(userInfo)")
-        print("UNUserNotificationCenterDelegate willPresent notification = \(notification), UserInfo = \(userInfo)")
+        print("==== UNUserNotificationCenterDelegate willPresent notification = \(notification), { UserInfo = \(userInfo) } ====")
         completionHandler([.alert, .badge, .sound])
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -244,7 +244,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 //                return
 //            }
 //        }
-        print("UNUserNotificationCenterDelegate didReceive response = \(response), UserInfo = \(userInfo)")
+        print("==== UNUserNotificationCenterDelegate didReceive response = \(response), UserInfo = \(userInfo) ====")
         completionHandler()
     
     }
@@ -289,7 +289,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         //               imagePush(data: data)
         //           }
         // Print full message.
-        print(userInfo)
+//        print(userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
