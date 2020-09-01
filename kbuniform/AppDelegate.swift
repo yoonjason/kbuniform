@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
         }
         
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        
         application.registerForRemoteNotifications()
         
         return true
@@ -159,40 +162,38 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //앱이 포그라운드에 있을 때 호출되는 메서드
-        print(#function)
+//        print(#function)
         
         let userInfo = notification.request.content.userInfo
-        //앱이 떠있을 때, 앱이 포그라운드 있을 때 호출됨.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        let content = UNMutableNotificationContent()
-        if let options = userInfo["fcm_options"] as? NSDictionary {
-            if let imagePath = options["image"] as? String {
-                let imagas = DownloadManager.image(imagePath)
-                let imageURL = URL(fileURLWithPath: imagas!)
-                do {
-                    let attach = try UNNotificationAttachment(identifier: "image-test", url: imageURL, options: nil)
-                    content.attachments = [attach]
-                    
-//                    let attach = try UNNotificationAttachment(identifier: "image-test", url: URL(string: imagePath)!, options: nil)
-//                    content.attachments = [attach]
+////        //앱이 떠있을 때, 앱이 포그라운드 있을 때 호출됨.
+//////        if let messageID = userInfo[gcmMessageIDKey] {
+//////            print("Message ID: \(messageID)")
+//////        }
+////        print(userInfo)
+//        let content = UNMutableNotificationContent()
+//        if let options = userInfo["fcm_options"] as? NSDictionary {
+//            if let imagePath = options["image"] as? String {
+//                let imagas = DownloadManager.image(imagePath)
+//                let imageURL = URL(fileURLWithPath: imagas!)
+//                do {
+////                    let attach = try UNNotificationAttachment(identifier: "image-test", url: imageURL, options: nil)
+////                    content.attachments = [attach]
 //                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
 //                    guard let attachment = UNNotificationAttachment.create(imageFileIdentifier: "img.jpeg", data: imageData!, options: nil) else {return}
 //                    content.attachments = [attachment]
-                }catch {
-                    print(error)
-                }
-            }
-        }
-        content.title = "FFFFFFF"
-        content.body = "육회가 먹고 싶다."
-        center.delegate = self
+////                    let attach = try UNNotificationAttachment(identifier: "image-test", url: URL(string: imagePath)!, options: nil)
+////                    content.attachments = [attach]
+////                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
+////                    guard let attachment = UNNotificationAttachment.create(imageFileIdentifier: "img.jpeg", data: imageData!, options: nil) else {return}
+////                    content.attachments = [attachment]
+//                }catch {
+//                    print(error)
+//                }
+//            }
+//        }
+//        content.title = "FFFFFFF"
+//        content.body = "육회가 먹고 싶다."
 //        let request = UNNotificationRequest(identifier: "Image_TEST", content: content, trigger: nil) // Schedule the notification.
-//        center.add(request, withCompletionHandler: { (error) in
-//            print("Error ===== ", error)
-//            return
-//        })
 //
 //        center.add(request){ (error : Error?) in
 //            if let theError = error {
@@ -202,8 +203,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
         
         // Print full message.
-        print("userNotificationCenter completionHandler UNNotificationPresentationOptions \(userInfo)")
-        
+//        print("userNotificationCenter completionHandler UNNotificationPresentationOptions \(userInfo)")
+        print("UNUserNotificationCenterDelegate willPresent notification = \(notification), UserInfo = \(userInfo)")
         completionHandler([.alert, .badge, .sound])
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -216,35 +217,34 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         let userInfo = response.notification.request.content.userInfo
         // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        let content = UNMutableNotificationContent()
-        if let options = userInfo["fcm_options"] as? NSDictionary {
-            if let imagePath = options["image"] as? String {
-                do {
+//        if let messageID = userInfo[gcmMessageIDKey] {
+//            print("Message ID: \(messageID)")
+//        }
+//        let content = UNMutableNotificationContent()
+//        if let options = userInfo["fcm_options"] as? NSDictionary {
+//            if let imagePath = options["image"] as? String {
+//                do {
+////                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
+////                    let attach = try UNNotificationAttachment(identifier: "image-test", url: URL(string: imagePath)!, options: nil)
+////                    content.attachments = [attach]
 //                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
-//                    let attach = try UNNotificationAttachment(identifier: "image-test", url: URL(string: imagePath)!, options: nil)
-//                    content.attachments = [attach]
-                    let imageData = NSData(contentsOf: URL(string: imagePath)!)
-                    guard let attachment = UNNotificationAttachment.create(imageFileIdentifier: "img.jpeg", data: imageData!, options: nil) else {return}
-                    content.attachments = [attachment]
-                }catch (let error){
-                    print(error)
-                }
-            }
-        }
-        content.title = "FFFFFFF"
-        content.body = "육회가 먹고 싶다."
-        let request = UNNotificationRequest(identifier: "Image_TEST", content: content, trigger: nil) // Schedule the notification.
-        center.delegate = self
-        center.add(request){ (error : Error?) in
-            if let theError = error {
-                print(theError)
-                return
-            }
-        }
-
+//                    guard let attachment = UNNotificationAttachment.create(imageFileIdentifier: "img.jpeg", data: imageData!, options: nil) else {return}
+//                    content.attachments = [attachment]
+//                }catch (let error){
+//                    print(error)
+//                }
+//            }
+//        }
+//        content.title = "FFFFFFF"
+//        content.body = "육회가 먹고 싶다."
+//        let request = UNNotificationRequest(identifier: "Image_TEST", content: content, trigger: nil) // Schedule the notification.
+//        center.add(request){ (error : Error?) in
+//            if let theError = error {
+//                print(theError)
+//                return
+//            }
+//        }
+        print("UNUserNotificationCenterDelegate didReceive response = \(response), UserInfo = \(userInfo)")
         completionHandler()
     
     }

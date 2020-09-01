@@ -7,5 +7,10 @@ target 'kbuniform' do
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Messaging'
   # Pods for kbuniform
+  
+end
 
+target 'NotificationServiceExtension' do
+use_frameworks!
+pod 'Firebase/Messaging'
 end
