@@ -78,7 +78,6 @@ class WebViewController: UIViewController {
 
 extension WebViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
     
-//    @available(iOS 8.0, *)
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if(message.name == "callbackHandler"){
             print(message.body)
@@ -86,7 +85,6 @@ extension WebViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMessag
         }
     }
     
-//    @available(iOS 8.0, *)
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let otherAction = UIAlertAction(title: "ok", style: .default) { (action) in
