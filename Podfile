@@ -6,6 +6,8 @@ target 'kbuniform' do
   use_frameworks!
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Messaging'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
   # Pods for kbuniform
   
 end

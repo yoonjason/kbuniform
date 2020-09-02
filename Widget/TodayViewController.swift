@@ -11,8 +11,10 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
+    @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.text = "안녕하세요. 한국 야구 유니폼의 모든 것 \n 한야모 앱입니다."
         // Do any additional setup after loading the view.
     }
         

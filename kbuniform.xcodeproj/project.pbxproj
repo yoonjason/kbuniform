@@ -26,6 +26,11 @@
 		1BA6B54C24FF35940040B183 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6B54B24FF35940040B183 /* TodayViewController.swift */; };
 		1BA6B54F24FF35940040B183 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA6B54D24FF35940040B183 /* MainInterface.storyboard */; };
 		1BA6B55324FF35940040B183 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1BA6B54724FF35940040B183 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1BA6B55724FF3AE10040B183 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6B54B24FF35940040B183 /* TodayViewController.swift */; };
+		1BA6B55824FF453D0040B183 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA6B54D24FF35940040B183 /* MainInterface.storyboard */; };
+		1BA6B55924FF47140040B183 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B79385A24FC823A00147AC3 /* Assets.xcassets */; };
+		1BA6B55C24FF67AB0040B183 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6B55B24FF67AB0040B183 /* Common.swift */; };
+		1BA6B55F24FF69DE0040B183 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6B55E24FF69DE0040B183 /* WebViewController.swift */; };
 		8EE9DBF59E5263D34C440AA8 /* Pods_kbuniform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F461015BEB4A393A105FA0 /* Pods_kbuniform.framework */; };
 		A502ABF5AB53094BE0F26F45 /* Pods_NotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7489364C83E309B728E78E2B /* Pods_NotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +102,8 @@
 		1BA6B54B24FF35940040B183 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		1BA6B54E24FF35940040B183 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		1BA6B55024FF35940040B183 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BA6B55B24FF67AB0040B183 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		1BA6B55E24FF69DE0040B183 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		548BA2D8FA30404DA76DF697 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		7489364C83E309B728E78E2B /* Pods_NotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F461015BEB4A393A105FA0 /* Pods_kbuniform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kbuniform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,10 +175,11 @@
 		1B79384D24FC823900147AC3 /* kbuniform */ = {
 			isa = PBXGroup;
 			children = (
+				1BA6B55D24FF69CA0040B183 /* ViewController */,
+				1BA6B55A24FF67910040B183 /* Common */,
 				1B79386724FC9B2900147AC3 /* kbuniform.entitlements */,
 				1B79384E24FC823900147AC3 /* AppDelegate.swift */,
 				1B79385024FC823900147AC3 /* SceneDelegate.swift */,
-				1B79385224FC823900147AC3 /* ViewController.swift */,
 				1B79385424FC823900147AC3 /* Main.storyboard */,
 				1B79385A24FC823A00147AC3 /* Assets.xcassets */,
 				1B79385C24FC823A00147AC3 /* LaunchScreen.storyboard */,
@@ -209,6 +217,23 @@
 				1BA6B55024FF35940040B183 /* Info.plist */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		1BA6B55A24FF67910040B183 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1BA6B55B24FF67AB0040B183 /* Common.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1BA6B55D24FF69CA0040B183 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1B79385224FC823900147AC3 /* ViewController.swift */,
+				1BA6B55E24FF69DE0040B183 /* WebViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		559C729A26EF2B8326B6DA55 /* Frameworks */ = {
@@ -363,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B79385E24FC823A00147AC3 /* LaunchScreen.storyboard in Resources */,
+				1BA6B55824FF453D0040B183 /* MainInterface.storyboard in Resources */,
 				1B79386624FC84DE00147AC3 /* GoogleService-Info.plist in Resources */,
 				1B79385B24FC823A00147AC3 /* Assets.xcassets in Resources */,
 				1B79385624FC823900147AC3 /* Main.storyboard in Resources */,
@@ -388,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BA6B55924FF47140040B183 /* Assets.xcassets in Resources */,
 				1BA6B54F24FF35940040B183 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +492,10 @@
 			files = (
 				1B79385324FC823900147AC3 /* ViewController.swift in Sources */,
 				1B79384F24FC823900147AC3 /* AppDelegate.swift in Sources */,
+				1BA6B55724FF3AE10040B183 /* TodayViewController.swift in Sources */,
 				1B79385124FC823900147AC3 /* SceneDelegate.swift in Sources */,
+				1BA6B55F24FF69DE0040B183 /* WebViewController.swift in Sources */,
+				1BA6B55C24FF67AB0040B183 /* Common.swift in Sources */,
 				1B79385924FC823900147AC3 /* kbuniform.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,7 +704,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = kbuniform/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -696,7 +726,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = kbuniform/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -715,6 +745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -735,6 +766,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -754,6 +786,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -773,6 +806,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = NotificationContentExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -792,6 +826,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -811,6 +846,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9P6WAX9VN5;
 				INFOPLIST_FILE = Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
