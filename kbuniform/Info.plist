@@ -44,5 +44,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>한야모 - 야구 유니폼의 모든 것</string>
 </dict>
 </plist>
