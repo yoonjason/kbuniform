@@ -35,6 +35,7 @@ class WebViewController: UIViewController {
         
         // js -> native call : name의 값을 지정하여, js에서 webkit.messageHandlers.NAME.postMessage("");와 연동되는 것, userContentController함수에서 처리한다
         contentController.add(self, name: "callbackHandler")
+        contentController.add(self, name: "testCallbackHandler")
         
         config.userContentController = contentController
         
@@ -82,6 +83,18 @@ extension WebViewController : WKNavigationDelegate, WKUIDelegate, WKScriptMessag
         if(message.name == "callbackHandler"){
             print(message.body)
             abc()
+        }
+        if(message.name == "testCallbackHandler") {
+            if let data : [String: String] = message.body as? Dictionary {
+                if let subject = data["subject"] as? String, let url = data["subject"] as? String {
+                    print("subject is \(subject), url is \(url)")
+                    var urlSrt = "www.naver.com"
+                    let request = URLRequest(url: URL(string: urlSrt)!)
+                    self.webView.load(request)
+                    
+                    print("==== END ====")
+                }
+            }
         }
     }
     
