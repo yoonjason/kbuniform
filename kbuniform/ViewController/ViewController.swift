@@ -9,12 +9,12 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+import NSObject_Rx
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var webviewBtn: UIButton!
-    let disposeBag = DisposeBag()
+    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +25,15 @@ class ViewController: UIViewController {
             .subscribe(onNext : {
                 self.performSegue(withIdentifier: SegueIndentifier.MOVETOWEBVIEW.rawValue, sender: nil)
             })
-            .disposed(by: disposeBag)
-        // Do any additional setup after loading the view.
+            .disposed(by: rx.disposeBag)
+        
+        loginBtn
+            .rx
+            .tap
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: SegueIndentifier.MOVETOLOGINVIEW.rawValue, sender: nil)
+            })
+            .disposed(by: rx.disposeBag)
     }
-
-
 }
 

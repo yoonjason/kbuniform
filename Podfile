@@ -8,6 +8,7 @@ target 'kbuniform' do
 	pod 'Firebase/Messaging'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
+  pod 'NSObject+Rx'
   # Pods for kbuniform
   
 end

@@ -77,6 +77,8 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
   - RxCocoa (5.1.1):
@@ -89,6 +91,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Messaging
+  - "NSObject+Rx"
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
 
@@ -105,6 +108,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - nanopb
+    - "NSObject+Rx"
     - PromisesObjC
     - Protobuf
     - RxCocoa
@@ -123,12 +127,13 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 18f9cf3d6b11f11446725e1850aab0cab68b2b9d
+PODFILE CHECKSUM: 88ae82b7ba239c89ed3679c5284e8256050d6fb4
 
 COCOAPODS: 1.9.3
