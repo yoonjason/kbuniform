@@ -34,15 +34,15 @@ class LoginViewController: UIViewController {
     
     private func requestLogin(){
         
-        if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+        if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
             
             switch authContext.biometryType {
             case .faceID:
-                message = "계정 정보를 열람하기 위해서 Face ID로 인증합니다."
+                message = "Face ID 인증해주세요."
             case .touchID :
-                message = "계정 정보를 열람하기 위해서 Touch ID로 인증합니다."
+                message = "Touch ID로 인증해주세요."
             case .none :
-                message = "계정 정보를 열람하기 위해서는 로그인하십시오"
+                message = "둘 다 안되니 로그인하십시오 X를 눌러 Joy를 표하십시오."
                 
             }
             
@@ -61,26 +61,30 @@ class LoginViewController: UIViewController {
                 }
             }
         }else {
+            print("X를 눌러 Joy를 표하십시오.")
             let errorDescripiton = error?.userInfo["NSLocalizedDescription"] ?? ""
             print(errorDescripiton)
             
             let alert = UIAlertController(title: "Authentication Required", message: message, preferredStyle: .alert)
             weak var usernameTextField : UITextField!
             alert.addTextField(configurationHandler: { textField in
-                textField.placeholder = "USer ID"
+                textField.placeholder = "아이디 좀.."
                 usernameTextField = textField
             })
             weak var passwordTextField : UITextField!
             alert.addTextField(configurationHandler: { textField in
-                textField.placeholder = "Password"
+                textField.placeholder = "비번도 좀 적어주시겠어요?"
                 textField.isSecureTextEntry = true
                 passwordTextField = textField
             })
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Log in", style: .destructive, handler: { action in
-                print(usernameTextField.text! + "\n" + passwordTextField.text!)
+            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: { action in
+//                print(usernameTextField.text! + " & " + passwordTextField.text!)
+                
             }))
-            self.present(self, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
 
