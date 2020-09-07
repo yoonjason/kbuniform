@@ -32,6 +32,7 @@
 		1BA6B55C24FF67AB0040B183 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6B55B24FF67AB0040B183 /* Common.swift */; };
 		1BA6B55F24FF69DE0040B183 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6B55E24FF69DE0040B183 /* WebViewController.swift */; };
 		1BE228C82505B4600011A3C3 /* AppleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE228C72505B4600011A3C3 /* AppleSignInViewController.swift */; };
+		1BE228EC250615700011A3C3 /* WebViewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE228EB250615700011A3C3 /* WebViewsController.swift */; };
 		1BE8D84C2501D8E200F6AE58 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8D84B2501D8E200F6AE58 /* LocalAuthentication.framework */; };
 		1BE8D84E2501D92500F6AE58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8D84D2501D92500F6AE58 /* LoginViewController.swift */; };
 		8EE9DBF59E5263D34C440AA8 /* Pods_kbuniform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F461015BEB4A393A105FA0 /* Pods_kbuniform.framework */; };
@@ -108,6 +109,7 @@
 		1BA6B55B24FF67AB0040B183 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		1BA6B55E24FF69DE0040B183 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1BE228C72505B4600011A3C3 /* AppleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInViewController.swift; sourceTree = "<group>"; };
+		1BE228EB250615700011A3C3 /* WebViewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewsController.swift; sourceTree = "<group>"; };
 		1BE8D84B2501D8E200F6AE58 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1BE8D84D2501D92500F6AE58 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		548BA2D8FA30404DA76DF697 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				1BA6B55E24FF69DE0040B183 /* WebViewController.swift */,
 				1BE8D84D2501D92500F6AE58 /* LoginViewController.swift */,
 				1BE228C72505B4600011A3C3 /* AppleSignInViewController.swift */,
+				1BE228EB250615700011A3C3 /* WebViewsController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				1B79384F24FC823900147AC3 /* AppDelegate.swift in Sources */,
 				1BA6B55724FF3AE10040B183 /* TodayViewController.swift in Sources */,
 				1B79385124FC823900147AC3 /* SceneDelegate.swift in Sources */,
+				1BE228EC250615700011A3C3 /* WebViewsController.swift in Sources */,
 				1BE8D84E2501D92500F6AE58 /* LoginViewController.swift in Sources */,
 				1BA6B55F24FF69DE0040B183 /* WebViewController.swift in Sources */,
 				1BA6B55C24FF67AB0040B183 /* Common.swift in Sources */,
