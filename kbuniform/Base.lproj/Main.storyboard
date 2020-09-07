@@ -81,17 +81,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="qwF-qb-9qV" kind="relationship" relationship="viewControllers" id="MU2-4z-2cX"/>
+                        <segue destination="T3P-Zg-tzJ" kind="relationship" relationship="viewControllers" id="8nd-nC-TLP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8A-9d-jXF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="A6Z-j9-QVi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qwF-qb-9qV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZuU-sZ-owY"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="ZuU-sZ-owY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="6PP-sP-dQZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -105,6 +106,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wcq-f1-yaE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="138.61607142857142"/>
+        </scene>
+        <!--Apple Sign In View Controller-->
+        <scene sceneID="AuD-iF-zqo">
+            <objects>
+                <viewController storyboardIdentifier="AppleSignInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uwE-50-kQ5" customClass="AppleSignInViewController" customModule="kbuniform" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3cb-dL-Crm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="xeI-FD-ACO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oIo-ga-2wW"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sef-yO-A4X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1997.1014492753625" y="798.21428571428567"/>
         </scene>
         <!--WebViewController-->
         <scene sceneID="dZm-NX-kOs">
@@ -206,7 +224,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efa-wN-zAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2811.594202898551" y="820.98214285714278"/>
+            <point key="canvasLocation" x="3721.739130434783" y="820.98214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xsu-Wg-Mhk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T3P-Zg-tzJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="Jjs-uJ-9Xe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="pys-NU-7p4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uwE-50-kQ5" kind="relationship" relationship="rootViewController" id="5gV-Ej-4Yz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jm7-eB-9rK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086.9565217391305" y="797.54464285714278"/>
         </scene>
     </scenes>
 </document>
