@@ -1,4 +1,7 @@
 PODS:
+  - BlueCryptor (1.0.32)
+  - BlueECC (1.2.5)
+  - BlueRSA (1.0.34)
   - Firebase/Analytics (6.30.0):
     - Firebase/Core
   - Firebase/Core (6.30.0):
@@ -72,6 +75,11 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
+  - KituraContracts (1.2.1):
+    - LoggerAPI (~> 1.7)
+  - LoggerAPI (1.9.0):
+    - Logging (~> 1.1)
+  - Logging (1.4.0)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -87,6 +95,12 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SwiftJWT (3.5.3):
+    - BlueCryptor (~> 1.0)
+    - BlueECC (~> 1.1)
+    - BlueRSA (~> 1.0)
+    - KituraContracts (~> 1.1)
+    - LoggerAPI (~> 1.7)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -94,9 +108,13 @@ DEPENDENCIES:
   - "NSObject+Rx"
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - SwiftJWT
 
 SPEC REPOS:
   trunk:
+    - BlueCryptor
+    - BlueECC
+    - BlueRSA
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -107,6 +125,9 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
+    - KituraContracts
+    - LoggerAPI
+    - Logging
     - nanopb
     - "NSObject+Rx"
     - PromisesObjC
@@ -114,8 +135,12 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SwiftJWT
 
 SPEC CHECKSUMS:
+  BlueCryptor: b0aee3d9b8f367b49b30de11cda90e1735571c24
+  BlueECC: 0d18e93347d3ec6d41416de21c1ffa4d4cd3c2cc
+  BlueRSA: 6f9776d62d9773502415a7db3bcbb2bbb3f71fc3
   Firebase: 210f41ca352067d83b1ba4fd2e7fb49a0c017397
   FirebaseAnalytics: a299a86ef70fcc6aa011418bc65a7e101fb9636c
   FirebaseCore: 9a41e2de78fef10f63cee30ab10e2945266bc1fc
@@ -126,6 +151,9 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 3def7652b1f5b5a576178dc332e2a36a260fbef6
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
+  KituraContracts: e845e60dc8627ad0a76fa55ef20a45451d8f830b
+  LoggerAPI: fb78461eedac5316b290f2404d88b9d614d96c57
+  Logging: beeb016c9c80cf77042d62e83495816847ef108b
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
@@ -133,7 +161,8 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftJWT: 9a47a71090cae25767078756b5810e3b630aa9a7
 
-PODFILE CHECKSUM: 88ae82b7ba239c89ed3679c5284e8256050d6fb4
+PODFILE CHECKSUM: 888b2dd98c0786fff58daba3ee4b3aef495d09dc
 
 COCOAPODS: 1.9.3

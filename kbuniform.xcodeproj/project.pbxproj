@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1B1351251450A8003A8D3C /* privateKey.key.pub in Resources */ = {isa = PBXBuildFile; fileRef = 1B1B134F251450A8003A8D3C /* privateKey.key.pub */; };
+		1B1B1352251450A8003A8D3C /* privateKey.key in Resources */ = {isa = PBXBuildFile; fileRef = 1B1B1350251450A8003A8D3C /* privateKey.key */; };
 		1B79384F24FC823900147AC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79384E24FC823900147AC3 /* AppDelegate.swift */; };
 		1B79385124FC823900147AC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79385024FC823900147AC3 /* SceneDelegate.swift */; };
 		1B79385324FC823900147AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79385224FC823900147AC3 /* ViewController.swift */; };
@@ -81,6 +83,9 @@
 
 /* Begin PBXFileReference section */
 		0CE18FDE6D763890EB86C11D /* Pods-kbuniform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kbuniform.release.xcconfig"; path = "Target Support Files/Pods-kbuniform/Pods-kbuniform.release.xcconfig"; sourceTree = "<group>"; };
+		1B1B134F251450A8003A8D3C /* privateKey.key.pub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privateKey.key.pub; sourceTree = "<group>"; };
+		1B1B1350251450A8003A8D3C /* privateKey.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privateKey.key; sourceTree = "<group>"; };
+		1B1B13542514993B003A8D3C /* privateKey.key */ = {isa = PBXFileReference; lastKnownFileType = text; path = privateKey.key; sourceTree = "<group>"; };
 		1B79384B24FC823900147AC3 /* kbuniform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kbuniform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B79384E24FC823900147AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B79385024FC823900147AC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,9 +162,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1B134825144A7B003A8D3C /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				1B1B1350251450A8003A8D3C /* privateKey.key */,
+				1B1B134F251450A8003A8D3C /* privateKey.key.pub */,
+			);
+			path = Key;
+			sourceTree = "<group>";
+		};
 		1B79384224FC823900147AC3 = {
 			isa = PBXGroup;
 			children = (
+				1B1B13542514993B003A8D3C /* privateKey.key */,
 				1B79384D24FC823900147AC3 /* kbuniform */,
 				1B79386D24FCDE6F00147AC3 /* NotificationServiceExtension */,
 				1B79388124FDF77100147AC3 /* NotificationContentExtension */,
@@ -184,6 +199,7 @@
 		1B79384D24FC823900147AC3 /* kbuniform */ = {
 			isa = PBXGroup;
 			children = (
+				1B1B134825144A7B003A8D3C /* Key */,
 				1BA6B55D24FF69CA0040B183 /* ViewController */,
 				1BA6B55A24FF67910040B183 /* Common */,
 				1B79386724FC9B2900147AC3 /* kbuniform.entitlements */,
@@ -400,8 +416,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B1B1352251450A8003A8D3C /* privateKey.key in Resources */,
 				1B79385E24FC823A00147AC3 /* LaunchScreen.storyboard in Resources */,
 				1BA6B55824FF453D0040B183 /* MainInterface.storyboard in Resources */,
+				1B1B1351251450A8003A8D3C /* privateKey.key.pub in Resources */,
 				1B79386624FC84DE00147AC3 /* GoogleService-Info.plist in Resources */,
 				1B79385B24FC823A00147AC3 /* Assets.xcassets in Resources */,
 				1B79385624FC823900147AC3 /* Main.storyboard in Resources */,

@@ -9,6 +9,7 @@ target 'kbuniform' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'NSObject+Rx'
+  pod 'SwiftJWT'
   # Pods for kbuniform
   
 end
