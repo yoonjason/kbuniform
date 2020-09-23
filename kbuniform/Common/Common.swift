@@ -12,5 +12,6 @@ import UIKit
 enum SegueIndentifier : String {
     case MOVETOWEBVIEW = "movetowebview"
     case MOVETOLOGINVIEW = "movetologinview"
+    case MOVETOCHATLIST = "movetochatlist"
 }
 

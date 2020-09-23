@@ -95,6 +95,9 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
   - SwiftJWT (3.5.3):
     - BlueCryptor (~> 1.0)
     - BlueECC (~> 1.1)
@@ -108,6 +111,7 @@ DEPENDENCIES:
   - "NSObject+Rx"
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - Socket.IO-Client-Swift (~> 15.2.0)
   - SwiftJWT
 
 SPEC REPOS:
@@ -135,6 +139,8 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - Socket.IO-Client-Swift
+    - Starscream
     - SwiftJWT
 
 SPEC CHECKSUMS:
@@ -161,8 +167,10 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftJWT: 9a47a71090cae25767078756b5810e3b630aa9a7
 
-PODFILE CHECKSUM: 888b2dd98c0786fff58daba3ee4b3aef495d09dc
+PODFILE CHECKSUM: 34c505428f20c49aef1373d85c4cfee1c1c3a253
 
 COCOAPODS: 1.9.3

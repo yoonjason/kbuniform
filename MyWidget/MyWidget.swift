@@ -50,9 +50,34 @@ struct Provider: IntentTimelineProvider {
             entries.append(entry)
         }
         /*
+         
+         * .atEnd
          예를들어 6시에 끝났으면 6시 넘어서 timeline을 요청하고
          새로운 timeline배열은
          [6시, 7시, 8시, 9시, 10시]가 되는거죠.
+         
+         
+         * .after
+         timeline에 3시간이 담겨 있다면
+         refresh policy가 after(2 hr)네요. timeline은 [now, 1hr, 2hr, 3hr]구요
+
+         원래같으면 3hr가 마지막날짜인데, 내가 2hr뒤에 refresh해!!!라는 policy를 넘겼기 때문에
+         2hr가 넘었을 때 다시 timeline을 요청하는 것을 볼 수 있습니다.
+
+         또 다시 after(2hr)를 넘겨주는 것을 볼 수 있는데, 이건 예제가 그렇게 되어있어서;;
+
+         그런거고 어떻게 짰는지에 따라 달라요
+
+         그러니까 일단 after(date)의 동작원리만 알고 넘어가주면 됩니다.
+         
+         
+         * never
+         이 never를 사용하면
+
+         WidgetKit은 앱이 WidgetCenter를 사용하여 WidgetKit에 새 타임라인을 요청하도록 지시 할 때 까지
+
+         다른 timeline을 요청하지 않는 친구입니다.
+
          */
         
         //entries -> 시간을 담은 배열, policy는 가장 이른 날짜를 나타내는 타입

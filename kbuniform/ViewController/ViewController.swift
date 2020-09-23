@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 import SwiftJWT
+import WidgetKit
 
 struct MyClaims: Claims {
     let iss: String
@@ -19,6 +20,8 @@ struct MyClaims: Claims {
     let admin: Bool
 }
 
+
+@available(iOS 14.0, *)
 class ViewController: UIViewController {
 
     @IBOutlet weak var webviewBtn: UIButton!
@@ -45,6 +48,25 @@ class ViewController: UIViewController {
 
 //        test()
         test2()
+        
+        
+        setWidget()
+    }
+    
+    @available(iOS 14.0, *)
+    func setWidget(){
+        WidgetCenter.shared.getCurrentConfigurations{ (result) in
+            switch (result) {
+            case .success(let widgets) :
+                print(widgets)
+                widgets.forEach{
+                    print($0.family, $0.kind)
+                }
+            case .failure(let error) :
+                print(error.localizedDescription)
+            }
+            
+        }
     }
 
     func test2() {
@@ -75,7 +97,7 @@ class ViewController: UIViewController {
             print(error)
             print("key is null")
         }
-
+//        WidgetCenter.shared.reloadTimelines(ofKind: <#T##String#>)
     
         
 //        do {

@@ -10,6 +10,7 @@ target 'kbuniform' do
   pod 'RxCocoa', '~> 5'
   pod 'NSObject+Rx'
   pod 'SwiftJWT'
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
   # Pods for kbuniform
   
 end

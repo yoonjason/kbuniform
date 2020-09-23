@@ -11,7 +11,9 @@ kbuniform
 ### Apple 로그인 연동
 ### WKWebview & ProgressView 연동
 ### Widget 연동
+### iOS 14전용 Widget 연동
 ### FCM Imagepush 연동
+### SocketIO를 활용한 채팅 구현(진행 중)
 - NotificationContentExtension
 
 
