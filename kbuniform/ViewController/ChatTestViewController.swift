@@ -12,6 +12,10 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
+struct chatType {
+    
+}
+
 class ChatTestViewController: UIViewController {
 
     var socket: SocketIOClient!
@@ -28,7 +32,9 @@ class ChatTestViewController: UIViewController {
             .tap
             .subscribe(onNext: {
                 print("send")
-                SocketIOManager.shared.sendMessage(message: self.textField.text!, nickName: "yys")
+//                SocketIOManager.shared.sendMessage(message: self.textField.text!, nickName: "yys")
+                SocketIOManager.shared.sendToMessage(message: self.textField.text!, nickName: "윤영석")
+//                SocketIOManager.shared.readMessage()
             })
             .disposed(by: rx.disposeBag)
 
@@ -37,7 +43,11 @@ class ChatTestViewController: UIViewController {
             .tap
             .subscribe(onNext: {
                 print("connectBtn")
-                SocketIOManager.shared.closeconnection()
+                self.performSegue(withIdentifier: SegueIndentifier.MOVETOTESTCHAT.rawValue, sender: nil)
+                SocketIOManager.shared.establishConnection()
+                SocketIOManager.shared.connectToServerWithNickname(nickname: "Jason", completionHandler: { _ in
+                  
+                })
             })
             .disposed(by: rx.disposeBag)
 
@@ -45,7 +55,7 @@ class ChatTestViewController: UIViewController {
             .rx
             .tap
             .subscribe(onNext: {
-                SocketIOManager.shared.establishConnection()
+                SocketIOManager.shared.closeconnection()
                 print("disconnectBtn")
             })
             .disposed(by: rx.disposeBag)

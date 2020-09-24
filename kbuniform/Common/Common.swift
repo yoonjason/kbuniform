@@ -13,5 +13,7 @@ enum SegueIndentifier : String {
     case MOVETOWEBVIEW = "movetowebview"
     case MOVETOLOGINVIEW = "movetologinview"
     case MOVETOCHATLIST = "movetochatlist"
+    case MOVETOTESTCHAT = "movetotestchatlist"
+    case MOVETOMESSAGE = "movetomessage"
 }
 

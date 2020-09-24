@@ -20,6 +20,9 @@
 		1B78071E251B3A4B005578D6 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78071D251B3A4B005578D6 /* SocketIOManager.swift */; };
 		1B780725251B4386005578D6 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780724251B4386005578D6 /* ChatDetailViewController.swift */; };
 		1B78072C251B43A1005578D6 /* ChatTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78072B251B43A1005578D6 /* ChatTestViewController.swift */; };
+		1B78073A251C4A22005578D6 /* ChatListTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780739251C4A22005578D6 /* ChatListTestViewController.swift */; };
+		1B780741251C62E1005578D6 /* MessageTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780740251C62E1005578D6 /* MessageTestViewController.swift */; };
+		1B780749251C64A7005578D6 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780748251C64A7005578D6 /* ChatListTableViewCell.swift */; };
 		1B79384F24FC823900147AC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79384E24FC823900147AC3 /* AppDelegate.swift */; };
 		1B79385124FC823900147AC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79385024FC823900147AC3 /* SceneDelegate.swift */; };
 		1B79385324FC823900147AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79385224FC823900147AC3 /* ViewController.swift */; };
@@ -116,6 +119,9 @@
 		1B78071D251B3A4B005578D6 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		1B780724251B4386005578D6 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
 		1B78072B251B43A1005578D6 /* ChatTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTestViewController.swift; sourceTree = "<group>"; };
+		1B780739251C4A22005578D6 /* ChatListTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTestViewController.swift; sourceTree = "<group>"; };
+		1B780740251C62E1005578D6 /* MessageTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTestViewController.swift; sourceTree = "<group>"; };
+		1B780748251C64A7005578D6 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		1B79384B24FC823900147AC3 /* kbuniform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kbuniform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B79384E24FC823900147AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B79385024FC823900147AC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +227,14 @@
 			path = MyWidget;
 			sourceTree = "<group>";
 		};
+		1B780747251C6491005578D6 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				1B780748251C64A7005578D6 /* ChatListTableViewCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		1B79384224FC823900147AC3 = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +265,7 @@
 		1B79384D24FC823900147AC3 /* kbuniform */ = {
 			isa = PBXGroup;
 			children = (
+				1B780747251C6491005578D6 /* CustomCell */,
 				1B1B134825144A7B003A8D3C /* Key */,
 				1BA6B55D24FF69CA0040B183 /* ViewController */,
 				1BA6B55A24FF67910040B183 /* Common */,
@@ -316,6 +331,8 @@
 				1B7806EE251B15BB005578D6 /* ChatListViewController.swift */,
 				1B780724251B4386005578D6 /* ChatDetailViewController.swift */,
 				1B78072B251B43A1005578D6 /* ChatTestViewController.swift */,
+				1B780739251C4A22005578D6 /* ChatListTestViewController.swift */,
+				1B780740251C62E1005578D6 /* MessageTestViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -630,7 +647,10 @@
 				1BE8D84E2501D92500F6AE58 /* LoginViewController.swift in Sources */,
 				1BA6B55F24FF69DE0040B183 /* WebViewController.swift in Sources */,
 				1B78071E251B3A4B005578D6 /* SocketIOManager.swift in Sources */,
+				1B78073A251C4A22005578D6 /* ChatListTestViewController.swift in Sources */,
 				1B4F251B25183DA800058644 /* MyWidget.intentdefinition in Sources */,
+				1B780741251C62E1005578D6 /* MessageTestViewController.swift in Sources */,
+				1B780749251C64A7005578D6 /* ChatListTableViewCell.swift in Sources */,
 				1BA6B55C24FF67AB0040B183 /* Common.swift in Sources */,
 				1B79385924FC823900147AC3 /* kbuniform.xcdatamodeld in Sources */,
 			);
