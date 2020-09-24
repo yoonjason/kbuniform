@@ -13,7 +13,7 @@ struct ChatType {
     var type = -1
     var message = ""
 }
-//emit : 보내고?, on : 
+//emit : 보내고?, on : 받고!
 
 class SocketIOManager : NSObject {
     
@@ -34,8 +34,26 @@ class SocketIOManager : NSObject {
         socket.disconnect()
     }
     
-    func connectToServerWithNickname(nickname : String, completionHandler : (_ userList : [[String : AnyObject]]?) -> Void) {
+    func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [User]?) -> Void) {
         socket.emit("connectUser", nickname)
+        socket.on("userList") { [weak self] (result, ack) -> Void in
+            print("result ::::: ",result)
+            guard result.count > 0,
+                let _ = self,
+                let user = result.first as? [[String: Any]],
+                let data = UIApplication.jsonData(from: user) else {
+                    return
+            }
+            do {
+                let userModel = try JSONDecoder().decode([User].self, from: data)
+                completionHandler(userModel)
+                print("userModel :: ",userModel)
+            }
+            catch let error {
+                print("Something happen wrong here...\(error)")
+                completionHandler(nil)
+            }
+        }
     }
     
     func sendMessage(message : String, nickName : String) {

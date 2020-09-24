@@ -10,16 +10,27 @@ import UIKit
 import RxCocoa
 import RxSwift
 import NSObject_Rx
+import SocketIO
+
+struct User : Codable {
+    var id : String?
+    var nickname : String?
+    var isConnected : Bool?
+}
 
 class ChatListTestViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        getUserList()
     }
     
+    func getUserList(){
+        SocketIOManager.shared.connectToServerWithNickname(nickname: "jason", completionHandler: { (userList)  in
+            print("\(#function)" ,userList)
+        })
+    }
 
     /*
     // MARK: - Navigation

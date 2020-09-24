@@ -16,9 +16,12 @@ struct chatType {
     
 }
 
+
+
 class ChatTestViewController: UIViewController {
 
     var socket: SocketIOClient!
+    var users = [Int]()
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sendBtn: UIButton!
     @IBOutlet weak var connectBtn: UIButton!
@@ -45,9 +48,7 @@ class ChatTestViewController: UIViewController {
                 print("connectBtn")
                 self.performSegue(withIdentifier: SegueIndentifier.MOVETOTESTCHAT.rawValue, sender: nil)
                 SocketIOManager.shared.establishConnection()
-                SocketIOManager.shared.connectToServerWithNickname(nickname: "Jason", completionHandler: { _ in
-                  
-                })
+                
             })
             .disposed(by: rx.disposeBag)
 
