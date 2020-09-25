@@ -23,7 +23,7 @@
 		1B78072C251B43A1005578D6 /* ChatTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78072B251B43A1005578D6 /* ChatTestViewController.swift */; };
 		1B78073A251C4A22005578D6 /* ChatListTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780739251C4A22005578D6 /* ChatListTestViewController.swift */; };
 		1B780741251C62E1005578D6 /* MessageTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780740251C62E1005578D6 /* MessageTestViewController.swift */; };
-		1B780749251C64A7005578D6 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780748251C64A7005578D6 /* ChatListTableViewCell.swift */; };
+		1B780749251C64A7005578D6 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B780748251C64A7005578D6 /* Cell.swift */; };
 		1B79384F24FC823900147AC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79384E24FC823900147AC3 /* AppDelegate.swift */; };
 		1B79385124FC823900147AC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79385024FC823900147AC3 /* SceneDelegate.swift */; };
 		1B79385324FC823900147AC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79385224FC823900147AC3 /* ViewController.swift */; };
@@ -123,7 +123,7 @@
 		1B78072B251B43A1005578D6 /* ChatTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTestViewController.swift; sourceTree = "<group>"; };
 		1B780739251C4A22005578D6 /* ChatListTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTestViewController.swift; sourceTree = "<group>"; };
 		1B780740251C62E1005578D6 /* MessageTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTestViewController.swift; sourceTree = "<group>"; };
-		1B780748251C64A7005578D6 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
+		1B780748251C64A7005578D6 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		1B79384B24FC823900147AC3 /* kbuniform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kbuniform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B79384E24FC823900147AC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B79385024FC823900147AC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 		1B780747251C6491005578D6 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				1B780748251C64A7005578D6 /* ChatListTableViewCell.swift */,
+				1B780748251C64A7005578D6 /* Cell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -654,7 +654,7 @@
 				1B78073A251C4A22005578D6 /* ChatListTestViewController.swift in Sources */,
 				1B4F251B25183DA800058644 /* MyWidget.intentdefinition in Sources */,
 				1B780741251C62E1005578D6 /* MessageTestViewController.swift in Sources */,
-				1B780749251C64A7005578D6 /* ChatListTableViewCell.swift in Sources */,
+				1B780749251C64A7005578D6 /* Cell.swift in Sources */,
 				1BA6B55C24FF67AB0040B183 /* Common.swift in Sources */,
 				1B79385924FC823900147AC3 /* kbuniform.xcdatamodeld in Sources */,
 			);

@@ -12,23 +12,58 @@ import RxSwift
 import NSObject_Rx
 import SocketIO
 
-struct User : Codable {
-    var id : String?
-    var nickname : String?
-    var isConnected : Bool?
+struct User: Codable {
+    var id: String?
+    var nickname: String?
+    var isConnected: Bool?
+}
+
+struct Message : Codable {
+    var date: String?
+    var message: String?
+    var nickname: String?
 }
 
 class ChatListTestViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+    var userList = PublishSubject<[User]>()
+
+
+    //ChatListTableViewCell
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserList()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.getUserList()
+        }
+
+        userList
+            .bind(to: tableView.rx.items(cellIdentifier: "ChatListTableViewCell", cellType: ChatListTableViewCell.self)) { (index, item, cell) in
+                cell.userLabel.text = item.nickname
+                cell.selectionStyle = .none
+            }
+            .disposed(by: rx.disposeBag)
+
+        tableView
+            .rx
+            .setDelegate(self)
+            .disposed(by: rx.disposeBag)
+        
+        Observable
+            .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(User.self))
+            .subscribe(onNext: { [self] (indexPath, item) in
+                print(indexPath, item.isConnected)
+                self.performSegue(withIdentifier: SegueIndentifier.MOVETOMESSAGE.rawValue, sender: nil)
+            })
+            .disposed(by: rx.disposeBag)
+            
     }
-    
-    func getUserList(){
-        SocketIOManager.shared.connectToServerWithNickname(nickname: "jason", completionHandler: { (userList)  in
-            print("\(#function)" ,userList)
+
+    func getUserList() {
+        SocketIOManager.shared.connectToServerWithNickname(nickname: "jason\(Int.random(in: 0..<92939))", completionHandler: { (userList) in
+            print("\(#function)", userList)
+            if let users = userList {
+                self.userList.onNext(users)
+            }
         })
     }
 
@@ -41,5 +76,9 @@ class ChatListTestViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension ChatListTestViewController: UIScrollViewDelegate {
 
 }

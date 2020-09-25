@@ -12,10 +12,6 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-struct chatType {
-    
-}
-
 
 
 class ChatTestViewController: UIViewController {

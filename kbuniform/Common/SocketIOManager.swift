@@ -8,6 +8,7 @@
 
 import Foundation
 import SocketIO
+import RxSwift
 
 struct ChatType {
     var type = -1
@@ -47,6 +48,7 @@ class SocketIOManager : NSObject {
             do {
                 let userModel = try JSONDecoder().decode([User].self, from: data)
                 completionHandler(userModel)
+                
                 print("userModel :: ",userModel)
             }
             catch let error {
@@ -56,15 +58,51 @@ class SocketIOManager : NSObject {
         }
     }
     
-    func sendMessage(message : String, nickName : String) {
-        socket.emit("event", ["message" : "This is a test message"])
-        socket.emit("event1", [["name":"yys"],["email" : "@naver.com"]])
-        socket.emit("event2", ["name":"yys", "message" : "@gmail.com"])
-        socket.emit("msg", ["nick":nickName, "msg" :message])
+    func exitChatWithNickname(nickname : String, completionHandler : @escaping () -> Void) {
+        socket.emit("exitUser", nickname)
+        completionHandler()
     }
     
+//    func sendMessage(message : String, nickName : String) {
+//        socket.emit("event", ["message" : "This is a test message"])
+//        socket.emit("event1", [["name":"yys"],["email" : "@naver.com"]])
+//        socket.emit("event2", ["name":"yys", "message" : "@gmail.com"])
+//        socket.emit("msg", ["nick":nickName, "msg" :message])
+//    }
+//    
     func sendToMessage(message : String, nickName : String) {
-        socket.emit("eventString", ["message" : message, "nickname" : nickName])
+        socket.emit("chatMessage", ["message" : message, "nickname" : nickName])
+    }
+    
+    func getChatMessage(completionHandler : @escaping (_ mseeageInfo : Message) -> Void) {
+        socket.on("newChatMessage") { (dataArray, ack) in
+            print("dataArray :: ",dataArray)
+            var messageInfo = [String: Any]()
+            
+            guard let messageData = dataArray[0] as? NSMutableDictionary,
+                let date = dataArray[2] as? String else{
+                    return
+            }
+            
+            messageInfo["date"] = date
+            messageInfo["message"] = messageData["message"]
+            messageInfo["nickname"] = messageData["nickname"]
+            
+            print("messageInfo", messageInfo)
+            guard let data = UIApplication.jsonData(from: messageInfo) else {
+                return
+            }
+            
+            print("data ||", data)
+            do {
+                let message = try JSONDecoder().decode(Message.self, from: data)
+                completionHandler(message)
+                
+                print("sendMessage!!!!! :: ", message)
+            }catch let error {
+                print(error)
+            }
+        }
     }
     
     func readMessage() {
@@ -81,6 +119,8 @@ class SocketIOManager : NSObject {
             print(chat.type, chat.message)
         }
     }
+    
+    
     
     
     
