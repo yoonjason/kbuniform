@@ -44,8 +44,24 @@ class MessageTestViewController: UIViewController {
             cell.messageLabel.text = item.message
         }
             .disposed(by: rx.disposeBag)
-
+        
+        NotificationCenter
+            .default
+            .addObserver(self, selector: "handleConnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: nil)
+        
+        NotificationCenter.default
+            .addObserver(self, selector: "handleDisconnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: nil)
+        
+        
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    func handleConnectedUserUpdateNotification(notification : Notification) {
+        
+    }
+    
+    func handleDisconnectedUserUpdateNotification(notification : Notification) {
+        
+    }
 }

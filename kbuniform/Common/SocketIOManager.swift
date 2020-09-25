@@ -56,6 +56,7 @@ class SocketIOManager : NSObject {
                 completionHandler(nil)
             }
         }
+        listenForOtherMessages()
     }
     
     func exitChatWithNickname(nickname : String, completionHandler : @escaping () -> Void) {
@@ -63,13 +64,6 @@ class SocketIOManager : NSObject {
         completionHandler()
     }
     
-//    func sendMessage(message : String, nickName : String) {
-//        socket.emit("event", ["message" : "This is a test message"])
-//        socket.emit("event1", [["name":"yys"],["email" : "@naver.com"]])
-//        socket.emit("event2", ["name":"yys", "message" : "@gmail.com"])
-//        socket.emit("msg", ["nick":nickName, "msg" :message])
-//    }
-//    
     func sendToMessage(message : String, nickName : String) {
         socket.emit("chatMessage", ["message" : message, "nickname" : nickName])
     }
@@ -120,9 +114,19 @@ class SocketIOManager : NSObject {
         }
     }
     
+    private func listenForOtherMessages() {
+        socket.on("userConnectUpdate") { (dataArray, ack) -> Void in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: dataArray[0] as! [String:AnyObject])
+        }
+        socket.on("userExitUpdate") { (dataArray, ack) -> Void in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: dataArray[0] as! [String:AnyObject])
+        }
+    }
     
-    
-    
+//    func connectToServerWithNickname(nickname : String, completionHandler: @escaping (_ userList : [User]) -> Void) {
+//
+//    }
+//
     
 }
 
