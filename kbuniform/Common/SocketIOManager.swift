@@ -16,29 +16,29 @@ struct ChatType {
 }
 //emit : 보내고?, on : 받고!
 
-class SocketIOManager : NSObject {
-    
+class SocketIOManager: NSObject {
+
     static let shared = SocketIOManager()
     let urlString = ""
     var manager = SocketManager(socketURL: URL(string: "http://localhost:9000")!, config: [.log(true), .compress])
-    var socket : SocketIOClient!
+    var socket: SocketIOClient!
     override init() {
         super.init()
         socket = self.manager.socket(forNamespace: "/")
     }
-    
-    func establishConnection(){
+
+    func establishConnection() {
         socket.connect()
     }
-    
+
     func closeconnection() {
         socket.disconnect()
     }
-    
+
     func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [User]?) -> Void) {
         socket.emit("connectUser", nickname)
         socket.on("userList") { [weak self] (result, ack) -> Void in
-            print("result ::::: ",result)
+            print("result ::::: ", result)
             guard result.count > 0,
                 let _ = self,
                 let user = result.first as? [[String: Any]],
@@ -48,8 +48,8 @@ class SocketIOManager : NSObject {
             do {
                 let userModel = try JSONDecoder().decode([User].self, from: data)
                 completionHandler(userModel)
-                
-                print("userModel :: ",userModel)
+
+                print("userModel :: ", userModel)
             }
             catch let error {
                 print("Something happen wrong here...\(error)")
@@ -58,75 +58,75 @@ class SocketIOManager : NSObject {
         }
         listenForOtherMessages()
     }
-    
-    func exitChatWithNickname(nickname : String, completionHandler : @escaping () -> Void) {
+
+    func exitChatWithNickname(nickname: String, completionHandler: @escaping () -> Void) {
         socket.emit("exitUser", nickname)
         completionHandler()
     }
-    
-    func sendToMessage(message : String, nickName : String) {
-        socket.emit("chatMessage", ["message" : message, "nickname" : nickName])
+
+    func sendToMessage(message: String, nickName: String) {
+        socket.emit("chatMessage", ["message": message, "nickname": nickName])
     }
-    
-    func getChatMessage(completionHandler : @escaping (_ mseeageInfo : Message) -> Void) {
+
+    func getChatMessage(completionHandler: @escaping (_ mseeageInfo: Message) -> Void) {
         socket.on("newChatMessage") { (dataArray, ack) in
-            print("dataArray :: ",dataArray)
+            print("dataArray :: ", dataArray)
             var messageInfo = [String: Any]()
-            
+
             guard let messageData = dataArray[0] as? NSMutableDictionary,
-                let date = dataArray[2] as? String else{
+                let date = dataArray[2] as? String else {
                     return
             }
-            
+
             messageInfo["date"] = date
             messageInfo["message"] = messageData["message"]
             messageInfo["nickname"] = messageData["nickname"]
-            
+
             print("messageInfo", messageInfo)
             guard let data = UIApplication.jsonData(from: messageInfo) else {
                 return
             }
-            
+
             print("data ||", data)
             do {
                 let message = try JSONDecoder().decode(Message.self, from: data)
                 completionHandler(message)
-                
+
                 print("sendMessage!!!!! :: ", message)
-            }catch let error {
+            } catch let error {
                 print(error)
             }
         }
     }
-    
+
     func readMessage() {
-        socket.on("ff"){ (dataArray, socketAck) in
+        socket.on("ff") { (dataArray, socketAck) in
             print(#function)
             var chat = ChatType()
-            
+
             print(type(of: dataArray))
             let data = dataArray[0] as! NSDictionary
-            
+
             chat.type = data["type"] as! Int
             chat.message = data["message"] as! String
-            
+
             print(chat.type, chat.message)
         }
     }
-    
+
     private func listenForOtherMessages() {
         socket.on("userConnectUpdate") { (dataArray, ack) -> Void in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: dataArray[0] as! [String:AnyObject])
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: dataArray[0] as! [String: AnyObject])
         }
         socket.on("userExitUpdate") { (dataArray, ack) -> Void in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: dataArray[0] as! [String:AnyObject])
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: dataArray[0] as! [String: AnyObject])
         }
     }
-    
+
 //    func connectToServerWithNickname(nickname : String, completionHandler: @escaping (_ userList : [User]) -> Void) {
 //
 //    }
 //
-    
+
 }
 
