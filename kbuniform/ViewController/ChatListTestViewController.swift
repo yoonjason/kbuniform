@@ -64,9 +64,11 @@ class ChatListTestViewController: UIViewController {
     }
 
     func getUserList() {
-        let nickname = "jason\(Int.random(in: 0..<92939))"
+//        let nickname = "jason\(Int.random(in: 0..<92939))"
+        let nickname = "윤영석"
         var userId = ""
-        SocketIOManager.shared.connectToServerWithNickname(nickname: "yys", completionHandler: { (userList) in
+        SocketIOManager.shared.connectToServerWithNickname(nickname: nickname, completionHandler: { (userList) in
+            Globals.shared.setUserDefaults(withValue: nickname, key: "myname")
             print("\(#function)", userList)
             print("userId : \(userList?.first?.id)")
             if let socketUserId = userList?.first?.id {

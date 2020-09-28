@@ -22,7 +22,7 @@ class SocketIOManager: NSObject {
     let urlString = ""
     var manager = SocketManager(socketURL: URL(string: "http://localhost:9000")!, config: [.log(true), .compress])
     var socket: SocketIOClient!
-    
+
     override init() {
         super.init()
         socket = self.manager.socket(forNamespace: "/")
@@ -37,16 +37,16 @@ class SocketIOManager: NSObject {
     func closeconnection() {
         socket.disconnect()
     }
-    
-    func getchatList(name : String) {
+
+    func getchatList(name: String) {
         socket = self.manager.socket(forNamespace: "/getChatList/room")
         establishConnection()
     }
-    
+
 
     func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [User]?) -> Void) {
         socket.emit("connectUser", nickname)
-        
+
         socket.on("userList") { [weak self] (result, ack) -> Void in
             print("result ::::: ", result)
             guard result.count > 0,
@@ -77,9 +77,41 @@ class SocketIOManager: NSObject {
     func sendToMessage(message: String, nickName: String) {
         socket.emit("chatMessage", ["message": message, "nickname": nickName])
     }
-    
-    func sendMessage(message : String, toId : String) {
-        socket.emit("toMessage", ["message" : message, "toId" : toId])
+
+    func sendMessage(message: String, toId: String) {
+        socket.emit("toMessage", ["message": message, "toId": toId])
+    }
+
+    func getMessage(completionHandler: @escaping (_ messageInfo: Message) -> Void) {
+        socket.on("sendServerToMessage") { (dataArray, ack) in
+            print(dataArray)
+            print("dataArray :: ", dataArray)
+            var messageInfo = [String: Any]()
+
+            guard let messageData = dataArray[0] as? NSMutableDictionary,
+                let date = dataArray[1] as? String else {
+                    return
+            }
+
+            messageInfo["date"] = date
+            messageInfo["message"] = messageData["message"]
+            messageInfo["nickname"] = messageData["nickname"]
+
+            print("messageInfo", messageInfo)
+            guard let data = UIApplication.jsonData(from: messageInfo) else {
+                return
+            }
+
+            print("data ||", data)
+            do {
+                let message = try JSONDecoder().decode(Message.self, from: data)
+                completionHandler(message)
+
+                print("sendMessage!!!!! :: ", message)
+            } catch let error {
+                print(error)
+            }
+        }
     }
 
     func getChatMessage(completionHandler: @escaping (_ mseeageInfo: Message) -> Void) {
@@ -112,12 +144,12 @@ class SocketIOManager: NSObject {
             }
         }
     }
-    
-    func sendSingleMessage(id : String, roomName : String) {
-        socket.emit("singleChat", ["id" : id, "roomname" : roomName])
+
+    func sendSingleMessage(id: String, roomName: String) {
+        socket.emit("singleChat", ["id": id, "roomname": roomName])
     }
-    
-    
+
+
 
     func readMessage() {
         socket.on("ff") { (dataArray, socketAck) in

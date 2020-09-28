@@ -591,7 +591,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-dL-H48">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGw-dL-H48">
                                                     <rect key="frame" x="20" y="11" width="374" height="73"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -608,6 +608,44 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="rGw-dL-H48" id="nHc-b5-tsd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherMessageViewCell" rowHeight="97" id="uBJ-Mn-1I8" customClass="OtherMessageViewCell" customModule="kbuniform" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="123" width="414" height="97"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uBJ-Mn-1I8" id="FRL-Z2-uZa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4l-QT-4to">
+                                                    <rect key="frame" x="20" y="37" width="374" height="49"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHx-4F-zpY">
+                                                    <rect key="frame" x="20" y="13" width="35.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="p0L-rl-bEA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="N4l-QT-4to" firstAttribute="leading" secondItem="FRL-Z2-uZa" secondAttribute="leadingMargin" id="AmG-Us-X0t"/>
+                                                <constraint firstItem="N4l-QT-4to" firstAttribute="top" secondItem="SHx-4F-zpY" secondAttribute="bottom" constant="3" id="fGe-ZZ-qB6"/>
+                                                <constraint firstItem="SHx-4F-zpY" firstAttribute="top" secondItem="FRL-Z2-uZa" secondAttribute="topMargin" constant="2" id="i2p-Pe-fYm"/>
+                                                <constraint firstItem="N4l-QT-4to" firstAttribute="trailing" secondItem="FRL-Z2-uZa" secondAttribute="trailingMargin" id="i6x-qy-XDz"/>
+                                                <constraint firstItem="SHx-4F-zpY" firstAttribute="leading" secondItem="FRL-Z2-uZa" secondAttribute="leadingMargin" id="mEx-j9-w8U"/>
+                                                <constraint firstItem="N4l-QT-4to" firstAttribute="bottom" secondItem="FRL-Z2-uZa" secondAttribute="bottomMargin" id="oF9-kR-Wec"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.84028373708537996" green="1" blue="0.84088138682617219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="messageLabel" destination="N4l-QT-4to" id="sA0-P8-U0r"/>
+                                            <outlet property="nicknameLabel" destination="SHx-4F-zpY" id="ck0-bH-UC1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
