@@ -17,6 +17,7 @@ class MessageTestViewController: UIViewController {
     @IBOutlet weak var sendBtn: UIButton!
 
 //    var chatMessages = PublishSubject<[Message]>()
+    var toId = ""
     var chatMessages = BehaviorRelay<[Message]>(value: [])
     var chatMessages2 = PublishSubject<[Message]>()
 
@@ -29,8 +30,9 @@ class MessageTestViewController: UIViewController {
         sendBtn
             .rx
             .tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [self] in
                 SocketIOManager.shared.sendToMessage(message: self.textView.text, nickName: "asdfsaf")
+//                SocketIOManager.shared.sendMessage(message: self.textView.text, toId: toId)
                 self.textView.text = ""
             })
             .disposed(by: rx.disposeBag)
@@ -48,7 +50,7 @@ class MessageTestViewController: UIViewController {
 //        NotificationCenter
 //            .default
 //            .addObserver(self, selector: "handleConnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: nil)
-//        
+//
 //        NotificationCenter.default
 //            .addObserver(self, selector: "handleDisconnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: nil)
         

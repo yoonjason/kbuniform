@@ -51,8 +51,13 @@ class ChatListTestViewController: UIViewController {
         Observable
             .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(User.self))
             .subscribe(onNext: { [self] (indexPath, item) in
-                print(indexPath, item.isConnected)
-                self.performSegue(withIdentifier: SegueIndentifier.MOVETOMESSAGE.rawValue, sender: nil)
+                print(indexPath, item.id)
+                if let goalUserId = item.id {
+                    print(item.id)
+                    self.performSegue(withIdentifier: SegueIndentifier.MOVETOMESSAGE.rawValue, sender: goalUserId)
+//                    SocketIOManager.shared.sendSingleMessage(id: goalUserId, roomName: "useRoom")
+                }
+                
             })
             .disposed(by: rx.disposeBag)
 
@@ -95,7 +100,16 @@ class ChatListTestViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIndentifier.MOVETOMESSAGE.rawValue {
+            if let destinationVC = segue.destination as? MessageTestViewController {
+                if let userId = sender as? String {
+                    destinationVC.toId = userId
+                    print("userId :: ",userId)
+                }
+            }
+        }
+    }
 }
 
 extension ChatListTestViewController: UIScrollViewDelegate {

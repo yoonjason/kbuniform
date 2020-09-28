@@ -77,6 +77,10 @@ class SocketIOManager: NSObject {
     func sendToMessage(message: String, nickName: String) {
         socket.emit("chatMessage", ["message": message, "nickname": nickName])
     }
+    
+    func sendMessage(message : String, toId : String) {
+        socket.emit("toMessage", ["message" : message, "toId" : toId])
+    }
 
     func getChatMessage(completionHandler: @escaping (_ mseeageInfo: Message) -> Void) {
         socket.on("newChatMessage") { (dataArray, ack) in
@@ -84,7 +88,7 @@ class SocketIOManager: NSObject {
             var messageInfo = [String: Any]()
 
             guard let messageData = dataArray[0] as? NSMutableDictionary,
-                let date = dataArray[2] as? String else {
+                let date = dataArray[1] as? String else {
                     return
             }
 
@@ -108,6 +112,12 @@ class SocketIOManager: NSObject {
             }
         }
     }
+    
+    func sendSingleMessage(id : String, roomName : String) {
+        socket.emit("singleChat", ["id" : id, "roomname" : roomName])
+    }
+    
+    
 
     func readMessage() {
         socket.on("ff") { (dataArray, socketAck) in

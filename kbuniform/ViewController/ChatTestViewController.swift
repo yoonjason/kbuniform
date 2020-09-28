@@ -31,8 +31,8 @@ class ChatTestViewController: UIViewController {
             .tap
             .subscribe(onNext: {
                 print("send")
-//                SocketIOManager.shared.sendMessage(message: self.textField.text!, nickName: "yys")
-                SocketIOManager.shared.sendToMessage(message: self.textField.text!, nickName: "윤영석")
+                SocketIOManager.shared.sendToMessage(message: self.textField.text!, nickName: "")
+//                SocketIOManager.shared.sendToMessage(message: self.textField.text!, nickName: "윤영석")
 //                SocketIOManager.shared.readMessage()
             })
             .disposed(by: rx.disposeBag)
