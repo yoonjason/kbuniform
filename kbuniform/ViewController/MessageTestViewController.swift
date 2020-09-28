@@ -45,12 +45,12 @@ class MessageTestViewController: UIViewController {
         }
             .disposed(by: rx.disposeBag)
         
-        NotificationCenter
-            .default
-            .addObserver(self, selector: "handleConnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: nil)
-        
-        NotificationCenter.default
-            .addObserver(self, selector: "handleDisconnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: nil)
+//        NotificationCenter
+//            .default
+//            .addObserver(self, selector: "handleConnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasConnectedNotification"), object: nil)
+//        
+//        NotificationCenter.default
+//            .addObserver(self, selector: "handleDisconnectedUserUpdateNotification", name: NSNotification.Name(rawValue: "userWasDisconnectedNotification"), object: nil)
         
         
         // Do any additional setup after loading the view.

@@ -22,21 +22,31 @@ class SocketIOManager: NSObject {
     let urlString = ""
     var manager = SocketManager(socketURL: URL(string: "http://localhost:9000")!, config: [.log(true), .compress])
     var socket: SocketIOClient!
+    
     override init() {
         super.init()
         socket = self.manager.socket(forNamespace: "/")
+//        print(#function, ":::::::::::: init")
     }
 
     func establishConnection() {
         socket.connect()
+        print(#function, ":::::::::::: establishConnection")
     }
 
     func closeconnection() {
         socket.disconnect()
     }
+    
+    func getchatList(name : String) {
+        socket = self.manager.socket(forNamespace: "/getChatList/room")
+        establishConnection()
+    }
+    
 
     func connectToServerWithNickname(nickname: String, completionHandler: @escaping (_ userList: [User]?) -> Void) {
         socket.emit("connectUser", nickname)
+        
         socket.on("userList") { [weak self] (result, ack) -> Void in
             print("result ::::: ", result)
             guard result.count > 0,

@@ -18,7 +18,7 @@ struct User: Codable {
     var isConnected: Bool?
 }
 
-struct Message : Codable {
+struct Message: Codable {
     var date: String?
     var message: String?
     var nickname: String?
@@ -47,7 +47,7 @@ class ChatListTestViewController: UIViewController {
             .rx
             .setDelegate(self)
             .disposed(by: rx.disposeBag)
-        
+
         Observable
             .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(User.self))
             .subscribe(onNext: { [self] (indexPath, item) in
@@ -55,12 +55,31 @@ class ChatListTestViewController: UIViewController {
                 self.performSegue(withIdentifier: SegueIndentifier.MOVETOMESSAGE.rawValue, sender: nil)
             })
             .disposed(by: rx.disposeBag)
-            
+
     }
 
     func getUserList() {
-        SocketIOManager.shared.connectToServerWithNickname(nickname: "jason\(Int.random(in: 0..<92939))", completionHandler: { (userList) in
+        let nickname = "jason\(Int.random(in: 0..<92939))"
+        var userId = ""
+        SocketIOManager.shared.connectToServerWithNickname(nickname: "yys", completionHandler: { (userList) in
             print("\(#function)", userList)
+            print("userId : \(userList?.first?.id)")
+            if let socketUserId = userList?.first?.id {
+                if let getUserId = Globals.shared.getUserDefaults(key: "userId") as? String {
+                    if getUserId.isEmpty {
+                        Globals.shared.setUserDefaults(withValue: socketUserId, key: "userId")
+                    }else {
+                        userId = getUserId
+                    }
+                }else {
+                    Globals.shared.setUserDefaults(withValue: socketUserId, key: "userId")
+                    if let getUserId = Globals.shared.getUserDefaults(key: "userId") as? String {
+                        userId = getUserId
+                    }
+                }
+            }
+            
+
             if let users = userList {
                 self.userList.onNext(users)
             }

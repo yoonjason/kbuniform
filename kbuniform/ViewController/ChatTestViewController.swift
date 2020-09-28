@@ -44,6 +44,7 @@ class ChatTestViewController: UIViewController {
                 print("connectBtn")
                 self.performSegue(withIdentifier: SegueIndentifier.MOVETOTESTCHAT.rawValue, sender: nil)
                 SocketIOManager.shared.establishConnection()
+//                SocketIOManager.shared.getchatList(name: "yys")
                 
             })
             .disposed(by: rx.disposeBag)
