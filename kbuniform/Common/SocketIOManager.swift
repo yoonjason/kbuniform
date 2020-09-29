@@ -9,7 +9,11 @@
 import Foundation
 import SocketIO
 import RxSwift
-
+/*
+ https://www.google.com/search?newwindow=1&sxsrf=ALeKk03WFWjoWuyLZHAKVsAhHCGvkVx4gA:1601338797424&q=socket.io+room+list&sa=X&ved=2ahUKEwiCzr3xi43sAhXsKqYKHcLIAP84ChDVAigDegQICxAE&biw=2106&bih=1297
+ https://gipyeonglee.tistory.com/99
+ 참고할 것
+ */
 struct ChatType {
     var type = -1
     var message = ""
@@ -179,6 +183,11 @@ class SocketIOManager: NSObject {
 //
 //    }
 //
+    
+    func createGroupTalk(){
+        print(":::::: \(#function)")
+        socket.emit("createRoom", ["roomname":"test"])
+    }
 
 }
 

@@ -34,8 +34,9 @@ class ChatListTestViewController: UIViewController {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.getUserList()
+            SocketIOManager.shared.createGroupTalk()
         }
-
+        
         userList
             .bind(to: tableView.rx.items(cellIdentifier: "ChatListTableViewCell", cellType: ChatListTableViewCell.self)) { (index, item, cell) in
                 cell.userLabel.text = item.nickname
