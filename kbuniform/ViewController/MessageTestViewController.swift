@@ -34,6 +34,7 @@ class MessageTestViewController: UIViewController {
             .subscribe(onNext: { [self] in
                 if let myname = Globals.shared.getUserDefaults(key: "myname") as? String {
                     SocketIOManager.shared.sendToMessage(message: self.textView.text, nickName: myname)
+//                    SocketIOManager.shared.sendChatMessage(roomname: "test", message: self.textView.text, nickname: myname)
                 }
 
 //                SocketIOManager.shared.sendMessage(message: self.textView.text, toId: toId)

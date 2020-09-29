@@ -9,10 +9,12 @@
 import Foundation
 import SocketIO
 import RxSwift
+//MARK: - 참고할 것
 /*
  https://www.google.com/search?newwindow=1&sxsrf=ALeKk03WFWjoWuyLZHAKVsAhHCGvkVx4gA:1601338797424&q=socket.io+room+list&sa=X&ved=2ahUKEwiCzr3xi43sAhXsKqYKHcLIAP84ChDVAigDegQICxAE&biw=2106&bih=1297
  https://gipyeonglee.tistory.com/99
- 참고할 것
+ https://opens.kr/63
+ 
  */
 struct ChatType {
     var type = -1
@@ -153,7 +155,10 @@ class SocketIOManager: NSObject {
         socket.emit("singleChat", ["id": id, "roomname": roomName])
     }
 
-
+    func sendChatMessage(roomname: String, message: String, nickname: String) {
+        socket.emit("groupMessage", ["roomname": roomname, "message": message, "nickname": nickname])
+        print(#function)
+    }
 
     func readMessage() {
         socket.on("ff") { (dataArray, socketAck) in
@@ -183,10 +188,10 @@ class SocketIOManager: NSObject {
 //
 //    }
 //
-    
-    func createGroupTalk(){
+
+    func createGroupTalk() {
         print(":::::: \(#function)")
-        socket.emit("createRoom", ["roomname":"test"])
+        socket.emit("createRoom", ["roomname": "test"])
     }
 
 }
