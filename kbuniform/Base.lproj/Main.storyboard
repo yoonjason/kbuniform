@@ -63,7 +63,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d1q-oZ-1YP">
                                 <rect key="frame" x="20" y="11" width="73" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="ic_crown"/>
+                                <state key="normal" image="ic_crown"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -112,6 +112,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="6PP-sP-dQZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.16078431369999999" green="0.49803921569999998" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -273,7 +274,7 @@
         <!--Custom Side Menu Navigation-->
         <scene sceneID="rzG-fU-y8A">
             <objects>
-                <navigationController storyboardIdentifier="SideMenuNavigationController" id="Ok2-Xy-6Gs" customClass="CustomSideMenuNavigation" customModule="kbuniform" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CustomSideMenuNavigation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ok2-Xy-6Gs" customClass="CustomSideMenuNavigation" customModule="kbuniform" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Dab-5J-dmo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vwe-ae-GeX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -924,7 +925,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="33n-vo-q6w"/>
-        <segue reference="wJd-B6-qv3"/>
+        <segue reference="dHR-yz-oCg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="base_profile" width="54" height="54"/>
