@@ -12,6 +12,7 @@ import Firebase
 import FirebaseCore
 import FirebaseMessaging
 import FirebaseInstanceID
+import SideMenu
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         center.delegate = self
         
         application.registerForRemoteNotifications()
-        
+    
         return true
     }
     

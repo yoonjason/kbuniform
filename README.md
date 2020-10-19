@@ -16,5 +16,7 @@ kbuniform
 ### FCM Imagepush 연동
 ### 로컬호스트 nodejs와 SocketIO를 활용한 1: 1채팅 구현
 - NotificationContentExtension
+### 연락처 불러오기
+### 연락처 누르면 문자 메시지 보내기
 
 
