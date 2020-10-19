@@ -11,6 +11,7 @@ target 'kbuniform' do
   pod 'NSObject+Rx'
   pod 'SwiftJWT'
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
+  pod 'SideMenu'
   # Pods for kbuniform
   
 end

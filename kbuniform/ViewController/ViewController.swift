@@ -26,6 +26,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var webviewBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var sideBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,24 +49,33 @@ class ViewController: UIViewController {
 
 //        test()
         test2()
-        
-        
+
+        sideBtn
+            .rx
+            .tap
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "FromMainToSideMenu", sender: nil)
+                print("Hey Side!")
+            })
+            .disposed(by: rx.disposeBag)
+
+
         setWidget()
     }
-    
+
     @available(iOS 14.0, *)
-    func setWidget(){
-        WidgetCenter.shared.getCurrentConfigurations{ (result) in
+    func setWidget() {
+        WidgetCenter.shared.getCurrentConfigurations { (result) in
             switch (result) {
-            case .success(let widgets) :
+            case .success(let widgets):
                 print(widgets)
-                widgets.forEach{
+                widgets.forEach {
                     print($0.family, $0.kind)
                 }
-            case .failure(let error) :
+            case .failure(let error):
                 print(error.localizedDescription)
             }
-            
+
         }
     }
 
@@ -75,31 +85,31 @@ class ViewController: UIViewController {
         let privateKeyPath = Bundle.main.path(forResource: "privateKey", ofType: "key")!
         let privateeee = Bundle.main.path(forResource: "privateKey", ofType: "key", inDirectory: "Key")
 //        print("privateeee", privateeee)
-        
+
         let publicKeyPath = Bundle.main.path(forResource: "privateKey.key", ofType: "pub")!
 //        print(publicKeyPath)
 //        let privateKey = try! Data(contentsOf: URL(string: privateKeyPath!)!, options: .alwaysMapped)
         if let pubKeyURL = URL(string: publicKeyPath) {
-            print("pubKeyURL :: ",pubKeyURL)
+            print("pubKeyURL :: ", pubKeyURL)
             do {
-                
+
             }
         }
-        
+
         guard let pubKeyUrl = URL(string: publicKeyPath) else {
-            
+
             return
         }
         do {
             let pubKey = try Data(contentsOf: pubKeyUrl, options: .alwaysMapped)
             print(pubKey)
-        }catch {
+        } catch {
             print(error)
             print("key is null")
         }
 //        WidgetCenter.shared.reloadTimelines(ofKind: <#T##String#>)
-    
-        
+
+
 //        do {
 //            let privateKey = try Data(contentsOf: URL(string: privateKeyPath)!, options: .alwaysMapped)
 //

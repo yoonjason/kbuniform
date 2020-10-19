@@ -95,6 +95,7 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SideMenu (6.4.9)
   - Socket.IO-Client-Swift (15.2.0):
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
@@ -111,6 +112,7 @@ DEPENDENCIES:
   - "NSObject+Rx"
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - SideMenu
   - Socket.IO-Client-Swift (~> 15.2.0)
   - SwiftJWT
 
@@ -139,6 +141,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SideMenu
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftJWT
@@ -167,10 +170,11 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SideMenu: 8ef57a3cfc024a2d3fc1c036c7fe98537baec9e0
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftJWT: 9a47a71090cae25767078756b5810e3b630aa9a7
 
-PODFILE CHECKSUM: 34c505428f20c49aef1373d85c4cfee1c1c3a253
+PODFILE CHECKSUM: 5a3f63a275921f0540ef732f5e5fe4e9e2561307
 
 COCOAPODS: 1.9.3

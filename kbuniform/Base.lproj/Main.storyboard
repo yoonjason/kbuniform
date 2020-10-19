@@ -5,6 +5,7 @@
         <deployment version="4352" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,13 +58,23 @@
                             <constraint firstItem="zxK-JV-f02" firstAttribute="top" secondItem="aBG-sY-nDn" secondAttribute="bottom" constant="15" id="y9A-M7-qUD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mGW-lI-PMa"/>
+                    <navigationItem key="navigationItem" id="mGW-lI-PMa">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="4ey-Zh-oMy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d1q-oZ-1YP">
+                                <rect key="frame" x="20" y="11" width="73" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="ic_crown"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="loginBtn" destination="zxK-JV-f02" id="QYj-mu-dNU"/>
+                        <outlet property="sideBtn" destination="d1q-oZ-1YP" id="s5K-6P-wxz"/>
                         <outlet property="webviewBtn" destination="aBG-sY-nDn" id="jGN-UG-A6Z"/>
                         <segue destination="o0r-ds-X5J" kind="show" identifier="movetowebview" id="Y2A-80-RNG"/>
                         <segue destination="AJw-8J-frD" kind="show" identifier="movetologinview" id="eph-pi-e7Y"/>
+                        <segue destination="Ok2-Xy-6Gs" kind="presentation" identifier="FromMainToSideMenu" id="dHR-yz-oCg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,6 +247,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggh-9p-xfL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1928.985507246377" y="1490.625"/>
+        </scene>
+        <!--Custom Side Menu Navigation-->
+        <scene sceneID="rzG-fU-y8A">
+            <objects>
+                <navigationController storyboardIdentifier="SideMenuNavigationController" id="Ok2-Xy-6Gs" customClass="CustomSideMenuNavigation" customModule="kbuniform" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Dab-5J-dmo"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vwe-ae-GeX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9dJ-3N-o4I" kind="relationship" relationship="rootViewController" id="S23-6t-BJ9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Qi-W7-JbN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="-507"/>
+        </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="h2n-V3-zvX">
+            <objects>
+                <viewController storyboardIdentifier="SideMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9dJ-3N-o4I" customClass="SideMenuViewController" customModule="kbuniform" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BdW-es-THF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LrE-Fv-A4z">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bG-HR-7WN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="182"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fG-57-M1E">
+                                        <rect key="frame" x="0.0" y="190" width="414" height="182"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzg-KY-R0d">
+                                        <rect key="frame" x="0.0" y="380" width="414" height="182"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEg-WF-MSI">
+                                        <rect key="frame" x="0.0" y="570" width="414" height="182"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xgR-0s-cqp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LrE-Fv-A4z" firstAttribute="leading" secondItem="xgR-0s-cqp" secondAttribute="leading" id="1op-5R-CSw"/>
+                            <constraint firstItem="LrE-Fv-A4z" firstAttribute="top" secondItem="xgR-0s-cqp" secondAttribute="top" id="TZv-5z-LbB"/>
+                            <constraint firstItem="LrE-Fv-A4z" firstAttribute="bottom" secondItem="xgR-0s-cqp" secondAttribute="bottom" id="Vxm-Pu-Fpe"/>
+                            <constraint firstItem="LrE-Fv-A4z" firstAttribute="trailing" secondItem="xgR-0s-cqp" secondAttribute="trailing" id="lsl-fU-xC5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bhq-Yo-7UN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muk-Hx-7zZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3444.9275362318845" y="-508.25892857142856"/>
         </scene>
         <!--WebViewController-->
         <scene sceneID="dZm-NX-kOs">
@@ -742,6 +815,7 @@
     </scenes>
     <resources>
         <image name="base_profile" width="54" height="54"/>
+        <image name="ic_crown" width="19" height="14"/>
         <image name="send" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
