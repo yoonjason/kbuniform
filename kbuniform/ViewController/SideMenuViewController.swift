@@ -14,9 +14,22 @@ import SideMenu
 
 class SideMenuViewController: UIViewController {
 
+    @IBOutlet weak var ContactBtn: UIButton!
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        ContactBtn
+            .rx
+            .tap
+            .subscribe(onNext: {
+                print("fjfjf")
+//                SideToContact
+                self.performSegue(withIdentifier: "SideToContact", sender: nil)
+            })
+            .disposed(by: rx.disposeBag)
         // Do any additional setup after loading the view.
     }
 

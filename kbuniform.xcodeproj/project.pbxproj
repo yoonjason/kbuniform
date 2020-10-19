@@ -54,6 +54,7 @@
 		1BE8D84E2501D92500F6AE58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8D84D2501D92500F6AE58 /* LoginViewController.swift */; };
 		1BEDDCA2253D2C69001E5F0C /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDDCA1253D2C69001E5F0C /* CustomSideMenuNavigation.swift */; };
 		1BEDDCA9253D2CA5001E5F0C /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDDCA8253D2CA5001E5F0C /* SideMenuViewController.swift */; };
+		1BEDDCB0253D5C25001E5F0C /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDDCAF253D5C25001E5F0C /* ContactViewController.swift */; };
 		8EE9DBF59E5263D34C440AA8 /* Pods_kbuniform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83F461015BEB4A393A105FA0 /* Pods_kbuniform.framework */; };
 		A502ABF5AB53094BE0F26F45 /* Pods_NotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7489364C83E309B728E78E2B /* Pods_NotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
@@ -159,6 +160,7 @@
 		1BE8D84D2501D92500F6AE58 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1BEDDCA1253D2C69001E5F0C /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		1BEDDCA8253D2CA5001E5F0C /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		1BEDDCAF253D5C25001E5F0C /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		548BA2D8FA30404DA76DF697 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		7489364C83E309B728E78E2B /* Pods_NotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F461015BEB4A393A105FA0 /* Pods_kbuniform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_kbuniform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,6 +344,7 @@
 				1B780740251C62E1005578D6 /* MessageTestViewController.swift */,
 				1BEDDCA1253D2C69001E5F0C /* CustomSideMenuNavigation.swift */,
 				1BEDDCA8253D2CA5001E5F0C /* SideMenuViewController.swift */,
+				1BEDDCAF253D5C25001E5F0C /* ContactViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				1B750119251C94CB000B111F /* Application+Extension.swift in Sources */,
 				1B78073A251C4A22005578D6 /* ChatListTestViewController.swift in Sources */,
 				1B4F251B25183DA800058644 /* MyWidget.intentdefinition in Sources */,
+				1BEDDCB0253D5C25001E5F0C /* ContactViewController.swift in Sources */,
 				1B780741251C62E1005578D6 /* MessageTestViewController.swift in Sources */,
 				1B780749251C64A7005578D6 /* Cell.swift in Sources */,
 				1BA6B55C24FF67AB0040B183 /* Common.swift in Sources */,

@@ -8,6 +8,10 @@
 
 import UIKit
 import AuthenticationServices
+import RxCocoa
+import RxSwift
+import NSObject_Rx
+
 
 enum UserdefaultString: String {
     case Email = "email"
@@ -23,7 +27,9 @@ class AppleSignInViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tokenLabel: UILabel!
     @IBOutlet weak var signoutBtn: UIButton!
-    
+    @IBOutlet weak var contactBtn: UIButton!
+    @IBOutlet weak var sideBtn: UIButton!
+
     @available(iOS 13.0, *)
     @IBAction func onActionSignout(_ sender: Any) {
         showAlert()
@@ -45,12 +51,28 @@ class AppleSignInViewController: UIViewController {
                 if let email = userDefault.object(forKey: UserdefaultString.Email.rawValue) as? String, let token = userDefault.object(forKey: UserdefaultString.Token.rawValue) as? String, let name = userDefault.object(forKey: UserdefaultString.Name.rawValue) as? String {
                     setLabels(name: name, token: token, email: email)
                 }
-            }else {
+            } else {
                 setLabels(name: "", token: "", email: "")
                 signInBtn.isHidden = false
                 signoutBtn.isHidden = true
             }
         }
+
+        contactBtn
+            .rx
+            .tap
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "FromSigninToContact", sender: nil)
+            })
+            .disposed(by: rx.disposeBag)
+
+        sideBtn
+            .rx
+            .tap
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "FromSigninToSideMenu", sender: nil)
+            })
+            .disposed(by: rx.disposeBag)
     }
 
     func setAppleLoginButton() {
@@ -79,8 +101,8 @@ class AppleSignInViewController: UIViewController {
         controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
         controller.performRequests()
     }
-    
-    
+
+
     @available(iOS 13.0, *)
     func showAlert() {
         let alert = UIAlertController(title: nil, message: "로그아웃 하시겠습니까?", preferredStyle: .alert)
@@ -88,14 +110,14 @@ class AppleSignInViewController: UIViewController {
             let loginText = "로그인이 필요한 서비스입니다."
             self.setLabels(name: "", token: "", email: loginText)
             self.signoutBtn.isHidden = true
-            
+
             self.signInBtn.isHidden = false
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func setLabels(name : String, token : String, email : String) {
+
+    func setLabels(name: String, token: String, email: String) {
         nameLabel.text = name
         tokenLabel.text = token
         emailLabel.text = email
