@@ -60,7 +60,7 @@ class ContactViewController: UIViewController, UIScrollViewDelegate {
             .subscribe(onNext: { [self] (indexPath, item) in
                 let cell = self.tableView.cellForRow(at: indexPath) as? ContactCell
                 cell?.backgroundColor = .green
-                item.phoneNumbers.forEach{ [self] phonenumber in
+                item.phoneNumbers.forEach { [self] phonenumber in
                     self.requestSMS(phonenumber.value.stringValue)
                 }
                 print("itemSelected")
@@ -157,6 +157,18 @@ extension ContactViewController: MFMessageComposeViewControllerDelegate {
             controller.recipients = [number]
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
+        }
+    }
+
+    private func requestCall(_ number: String) {
+        if let url = URL(string: "tel://\(number)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            print("NotCalling")
         }
     }
 }
