@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1B1B1351251450A8003A8D3C /* privateKey.key.pub in Resources */ = {isa = PBXBuildFile; fileRef = 1B1B134F251450A8003A8D3C /* privateKey.key.pub */; };
 		1B1B1352251450A8003A8D3C /* privateKey.key in Resources */ = {isa = PBXBuildFile; fileRef = 1B1B1350251450A8003A8D3C /* privateKey.key */; };
+		1B1D09B825429C860053487C /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D09B725429C860053487C /* EventViewController.swift */; };
 		1B4F251025183DA700058644 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4F250F25183DA700058644 /* WidgetKit.framework */; };
 		1B4F251225183DA700058644 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4F251125183DA700058644 /* SwiftUI.framework */; };
 		1B4F251525183DA700058644 /* MyWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F251425183DA700058644 /* MyWidget.swift */; };
@@ -112,6 +113,7 @@
 		1B1B134F251450A8003A8D3C /* privateKey.key.pub */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privateKey.key.pub; sourceTree = "<group>"; };
 		1B1B1350251450A8003A8D3C /* privateKey.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privateKey.key; sourceTree = "<group>"; };
 		1B1B13542514993B003A8D3C /* privateKey.key */ = {isa = PBXFileReference; lastKnownFileType = text; path = privateKey.key; sourceTree = "<group>"; };
+		1B1D09B725429C860053487C /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		1B4F250E25183DA700058644 /* MyWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4F250F25183DA700058644 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		1B4F251125183DA700058644 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -345,6 +347,7 @@
 				1BEDDCA1253D2C69001E5F0C /* CustomSideMenuNavigation.swift */,
 				1BEDDCA8253D2CA5001E5F0C /* SideMenuViewController.swift */,
 				1BEDDCAF253D5C25001E5F0C /* ContactViewController.swift */,
+				1B1D09B725429C860053487C /* EventViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				1B78072C251B43A1005578D6 /* ChatTestViewController.swift in Sources */,
 				1BA6B55724FF3AE10040B183 /* TodayViewController.swift in Sources */,
 				1B79385124FC823900147AC3 /* SceneDelegate.swift in Sources */,
+				1B1D09B825429C860053487C /* EventViewController.swift in Sources */,
 				1BE228EC250615700011A3C3 /* WebViewsController.swift in Sources */,
 				1B7806EF251B15BB005578D6 /* ChatListViewController.swift in Sources */,
 				1BE8D84E2501D92500F6AE58 /* LoginViewController.swift in Sources */,

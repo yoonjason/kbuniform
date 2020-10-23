@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -307,7 +307,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fG-57-M1E">
                                         <rect key="frame" x="0.0" y="190" width="414" height="182"/>
-                                        <state key="normal" title="Button">
+                                        <state key="normal" title="캘린더 연동?">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
@@ -338,8 +338,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Bhq-Yo-7UN"/>
                     <connections>
-                        <outlet property="ContactBtn" destination="6bG-HR-7WN" id="20E-Bs-yZB"/>
+                        <outlet property="calendarBtn" destination="8fG-57-M1E" id="z9f-7i-fX0"/>
+                        <outlet property="contactBtn" destination="6bG-HR-7WN" id="wn0-5f-rCB"/>
                         <segue destination="XJt-nh-6NM" kind="show" identifier="SideToContact" id="33n-vo-q6w"/>
+                        <segue destination="FSt-9y-d4k" kind="show" identifier="SideToCalendar" id="Kqu-kZ-fFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muk-Hx-7zZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -418,7 +420,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erB-7f-d9S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4518.840579710145" y="-392.41071428571428"/>
+            <point key="canvasLocation" x="4164" y="-508"/>
+        </scene>
+        <!--Event View Controller-->
+        <scene sceneID="li9-yR-va9">
+            <objects>
+                <viewController id="FSt-9y-d4k" customClass="EventViewController" customModule="kbuniform" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fG8-2r-Z7Q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aht-Sl-BSb">
+                                <rect key="frame" x="0.0" y="68" width="414" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="qjD-bj-D8K"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ohn-qZ-a4M"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aht-Sl-BSb" firstAttribute="top" secondItem="ohn-qZ-a4M" secondAttribute="top" constant="12" id="ELT-Ub-ekk"/>
+                            <constraint firstItem="aht-Sl-BSb" firstAttribute="leading" secondItem="ohn-qZ-a4M" secondAttribute="leading" id="MUX-xA-PQg"/>
+                            <constraint firstItem="ohn-qZ-a4M" firstAttribute="bottom" secondItem="aht-Sl-BSb" secondAttribute="bottom" constant="648" id="vqk-75-UDY"/>
+                            <constraint firstItem="aht-Sl-BSb" firstAttribute="trailing" secondItem="ohn-qZ-a4M" secondAttribute="trailing" id="wyl-2v-RbE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aEt-KZ-p4M"/>
+                    <connections>
+                        <outlet property="addEventBtn" destination="aht-Sl-BSb" id="eCW-sx-IHU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MKj-zj-MWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4862.3188405797109" y="-508.25892857142856"/>
         </scene>
         <!--WebViewController-->
         <scene sceneID="dZm-NX-kOs">

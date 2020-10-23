@@ -53,5 +53,7 @@
 	</dict>
 	<key>NSContactsUsageDescription</key>
 	<string></string>
+	<key>NSCalendarsUsageDescription</key>
+	<string></string>
 </dict>
 </plist>

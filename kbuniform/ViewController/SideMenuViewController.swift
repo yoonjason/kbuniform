@@ -14,28 +14,32 @@ import SideMenu
 
 class SideMenuViewController: UIViewController {
 
-    @IBOutlet weak var ContactBtn: UIButton!
-
+    @IBOutlet weak var contactBtn: UIButton!
+    @IBOutlet weak var calendarBtn: UIButton!
+    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        ContactBtn
+        contactBtn
             .rx
             .tap
             .subscribe(onNext: {
                 self.performSegue(withIdentifier: "SideToContact", sender: nil)
             })
             .disposed(by: rx.disposeBag)
-        
-        // Do any additional setup after loading the view.
+        calendarBtn
+            .rx
+            .tap
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "SideToCalendar", sender: nil)
+            })
+            .disposed(by: rx.disposeBag)
     }
-
-
-
-
+    
 }
+
 extension SideMenuViewController: SideMenuNavigationControllerDelegate {
     func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
         print("SideMenu Appearing! (animated: \(animated))")
