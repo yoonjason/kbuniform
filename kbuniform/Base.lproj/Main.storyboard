@@ -340,8 +340,10 @@
                     <connections>
                         <outlet property="calendarBtn" destination="8fG-57-M1E" id="z9f-7i-fX0"/>
                         <outlet property="contactBtn" destination="6bG-HR-7WN" id="wn0-5f-rCB"/>
+                        <outlet property="motionBtn" destination="Wzg-KY-R0d" id="9R8-hL-Kcp"/>
                         <segue destination="XJt-nh-6NM" kind="show" identifier="SideToContact" id="33n-vo-q6w"/>
                         <segue destination="FSt-9y-d4k" kind="show" identifier="SideToCalendar" id="Kqu-kZ-fFe"/>
+                        <segue destination="Vz1-ua-LNI" kind="show" identifier="SideToMotion" id="8eO-r2-gtr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muk-Hx-7zZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -433,28 +435,90 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aht-Sl-BSb">
                                 <rect key="frame" x="0.0" y="68" width="414" height="92"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="qjD-bj-D8K"/>
+                                    <constraint firstAttribute="height" constant="92" id="cos-h7-RXx"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="일정 등록하기"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RZ-TU-7Zy">
+                                <rect key="frame" x="0.0" y="196" width="414" height="92"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="92" id="wPz-XY-sDE"/>
+                                </constraints>
+                                <state key="normal" title="Calendar Chooser"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ohn-qZ-a4M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aht-Sl-BSb" firstAttribute="top" secondItem="ohn-qZ-a4M" secondAttribute="top" constant="12" id="ELT-Ub-ekk"/>
-                            <constraint firstItem="aht-Sl-BSb" firstAttribute="leading" secondItem="ohn-qZ-a4M" secondAttribute="leading" id="MUX-xA-PQg"/>
-                            <constraint firstItem="ohn-qZ-a4M" firstAttribute="bottom" secondItem="aht-Sl-BSb" secondAttribute="bottom" constant="648" id="vqk-75-UDY"/>
-                            <constraint firstItem="aht-Sl-BSb" firstAttribute="trailing" secondItem="ohn-qZ-a4M" secondAttribute="trailing" id="wyl-2v-RbE"/>
+                            <constraint firstItem="6RZ-TU-7Zy" firstAttribute="leading" secondItem="ohn-qZ-a4M" secondAttribute="leading" id="Fqs-aW-9cl"/>
+                            <constraint firstItem="aht-Sl-BSb" firstAttribute="top" secondItem="ohn-qZ-a4M" secondAttribute="top" constant="12" id="NPK-Fm-rpA"/>
+                            <constraint firstItem="aht-Sl-BSb" firstAttribute="trailing" secondItem="ohn-qZ-a4M" secondAttribute="trailing" id="clH-Xx-1Nd"/>
+                            <constraint firstItem="6RZ-TU-7Zy" firstAttribute="top" secondItem="aht-Sl-BSb" secondAttribute="bottom" constant="36" id="izY-n6-V9C"/>
+                            <constraint firstItem="6RZ-TU-7Zy" firstAttribute="trailing" secondItem="ohn-qZ-a4M" secondAttribute="trailing" id="tzz-Ho-KKi"/>
+                            <constraint firstItem="aht-Sl-BSb" firstAttribute="leading" secondItem="ohn-qZ-a4M" secondAttribute="leading" id="y0b-db-F6e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aEt-KZ-p4M"/>
                     <connections>
+                        <outlet property="addChooseBtn" destination="6RZ-TU-7Zy" id="Ro3-sr-ZCP"/>
                         <outlet property="addEventBtn" destination="aht-Sl-BSb" id="eCW-sx-IHU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKj-zj-MWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4862.3188405797109" y="-508.25892857142856"/>
+        </scene>
+        <!--Motion View Controller-->
+        <scene sceneID="Hc5-zz-D4Q">
+            <objects>
+                <viewController id="Vz1-ua-LNI" customClass="MotionViewController" customModule="kbuniform" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nwp-4L-hSn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="002" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-tp-FLk">
+                                <rect key="frame" x="0.0" y="192" width="123" height="134"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="134" id="4GC-lH-lQF"/>
+                                    <constraint firstAttribute="width" constant="123" id="Mzm-z6-qRL"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="001" translatesAutoresizingMaskIntoConstraints="NO" id="BJd-bc-8Sx">
+                                <rect key="frame" x="164" y="116" width="250" height="286"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="dDP-77-iJ5"/>
+                                    <constraint firstAttribute="height" constant="286" id="gGB-61-Tn4"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="003" translatesAutoresizingMaskIntoConstraints="NO" id="DgC-zM-vQY">
+                                <rect key="frame" x="164" y="0.0" width="250" height="286"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Fsp-Jk-u7V"/>
+                                    <constraint firstAttribute="height" constant="286" id="V4p-Qr-gns"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qqa-z7-t9H"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DgC-zM-vQY" firstAttribute="top" secondItem="nwp-4L-hSn" secondAttribute="top" id="79J-bp-VVc"/>
+                            <constraint firstItem="BJd-bc-8Sx" firstAttribute="top" secondItem="qqa-z7-t9H" secondAttribute="top" constant="60" id="hoZ-P1-jpU"/>
+                            <constraint firstItem="DgC-zM-vQY" firstAttribute="trailing" secondItem="qqa-z7-t9H" secondAttribute="trailing" id="pG1-Yg-ivf"/>
+                            <constraint firstItem="K8p-tp-FLk" firstAttribute="leading" secondItem="qqa-z7-t9H" secondAttribute="leading" id="rBL-qg-hHE"/>
+                            <constraint firstItem="K8p-tp-FLk" firstAttribute="top" secondItem="qqa-z7-t9H" secondAttribute="top" constant="136" id="uvf-zn-zbB"/>
+                            <constraint firstItem="BJd-bc-8Sx" firstAttribute="trailing" secondItem="qqa-z7-t9H" secondAttribute="trailing" id="xiN-va-59o"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rhm-xW-h42"/>
+                    <connections>
+                        <outlet property="image001" destination="BJd-bc-8Sx" id="9uF-KR-rPa"/>
+                        <outlet property="image002" destination="K8p-tp-FLk" id="y4J-cJ-sKI"/>
+                        <outlet property="image003" destination="DgC-zM-vQY" id="RLX-YW-1Kr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ww-wd-XlV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5640.579710144928" y="-508.25892857142856"/>
         </scene>
         <!--WebViewController-->
         <scene sceneID="dZm-NX-kOs">
@@ -964,6 +1028,9 @@
         <segue reference="dHR-yz-oCg"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="001" width="252" height="291"/>
+        <image name="002" width="189" height="185"/>
+        <image name="003" width="244" height="279"/>
         <image name="base_profile" width="54" height="54"/>
         <image name="ic_crown" width="19" height="14"/>
         <image name="send" width="30" height="30"/>

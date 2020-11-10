@@ -16,6 +16,7 @@ class SideMenuViewController: UIViewController {
 
     @IBOutlet weak var contactBtn: UIButton!
     @IBOutlet weak var calendarBtn: UIButton!
+    @IBOutlet weak var motionBtn: UIButton!
     
 
 
@@ -34,6 +35,13 @@ class SideMenuViewController: UIViewController {
             .tap
             .subscribe(onNext: {
                 self.performSegue(withIdentifier: "SideToCalendar", sender: nil)
+            })
+            .disposed(by: rx.disposeBag)
+        motionBtn
+            .rx
+            .tap
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: "SideToMotion", sender: nil)
             })
             .disposed(by: rx.disposeBag)
     }

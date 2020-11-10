@@ -51,6 +51,7 @@
 		1BA6B55F24FF69DE0040B183 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA6B55E24FF69DE0040B183 /* WebViewController.swift */; };
 		1BE228C82505B4600011A3C3 /* AppleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE228C72505B4600011A3C3 /* AppleSignInViewController.swift */; };
 		1BE228EC250615700011A3C3 /* WebViewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE228EB250615700011A3C3 /* WebViewsController.swift */; };
+		1BE8C3142559258400B96AC7 /* MotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8C3132559258400B96AC7 /* MotionViewController.swift */; };
 		1BE8D84C2501D8E200F6AE58 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE8D84B2501D8E200F6AE58 /* LocalAuthentication.framework */; };
 		1BE8D84E2501D92500F6AE58 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE8D84D2501D92500F6AE58 /* LoginViewController.swift */; };
 		1BEDDCA2253D2C69001E5F0C /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDDCA1253D2C69001E5F0C /* CustomSideMenuNavigation.swift */; };
@@ -158,6 +159,7 @@
 		1BA6B55E24FF69DE0040B183 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1BE228C72505B4600011A3C3 /* AppleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInViewController.swift; sourceTree = "<group>"; };
 		1BE228EB250615700011A3C3 /* WebViewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewsController.swift; sourceTree = "<group>"; };
+		1BE8C3132559258400B96AC7 /* MotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionViewController.swift; sourceTree = "<group>"; };
 		1BE8D84B2501D8E200F6AE58 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		1BE8D84D2501D92500F6AE58 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1BEDDCA1253D2C69001E5F0C /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				1BEDDCA8253D2CA5001E5F0C /* SideMenuViewController.swift */,
 				1BEDDCAF253D5C25001E5F0C /* ContactViewController.swift */,
 				1B1D09B725429C860053487C /* EventViewController.swift */,
+				1BE8C3132559258400B96AC7 /* MotionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 			files = (
 				1B79385324FC823900147AC3 /* ViewController.swift in Sources */,
 				1B780725251B4386005578D6 /* ChatDetailViewController.swift in Sources */,
+				1BE8C3142559258400B96AC7 /* MotionViewController.swift in Sources */,
 				1BEDDCA2253D2C69001E5F0C /* CustomSideMenuNavigation.swift in Sources */,
 				1BE228C82505B4600011A3C3 /* AppleSignInViewController.swift in Sources */,
 				1BEDDCA9253D2CA5001E5F0C /* SideMenuViewController.swift in Sources */,

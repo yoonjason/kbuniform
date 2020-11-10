@@ -89,6 +89,13 @@ PODS:
     - RxSwift (~> 5.1)
   - PromisesObjC (1.2.10)
   - Protobuf (3.13.0)
+  - RxAnimated (0.7.0):
+    - RxAnimated/Core (= 0.7.0)
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxAnimated/Core (0.7.0):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -110,6 +117,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Messaging
   - "NSObject+Rx"
+  - RxAnimated
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
   - SideMenu
@@ -138,6 +146,7 @@ SPEC REPOS:
     - "NSObject+Rx"
     - PromisesObjC
     - Protobuf
+    - RxAnimated
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -167,6 +176,7 @@ SPEC CHECKSUMS:
   "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Protobuf: 3dac39b34a08151c6d949560efe3f86134a3f748
+  RxAnimated: 8540892468e906e7404595bc51ed4b36b3737ab5
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
@@ -175,6 +185,6 @@ SPEC CHECKSUMS:
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftJWT: 9a47a71090cae25767078756b5810e3b630aa9a7
 
-PODFILE CHECKSUM: 5a3f63a275921f0540ef732f5e5fe4e9e2561307
+PODFILE CHECKSUM: de5ce5c6451a9ff2053ca4a145cccbd1b0d62bd5
 
 COCOAPODS: 1.9.3
